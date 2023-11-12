@@ -1,5 +1,5 @@
 /* Backup for localhost:8001/
- *  at 1697998298
+ *  at 1698971477
  */
 
 SET NAMES 'utf8mb4';
@@ -589,6 +589,14 @@ INSERT INTO `ps_access` VALUES
 ('1','822'),
 ('1','823'),
 ('1','824'),
+('1','829'),
+('1','830'),
+('1','831'),
+('1','832'),
+('1','833'),
+('1','834'),
+('1','835'),
+('1','836'),
 ('2','9'),
 ('2','10'),
 ('2','11'),
@@ -608,7 +616,8 @@ INSERT INTO `ps_access` VALUES
 ('2','85'),
 ('2','86'),
 ('2','87'),
-('2','88'),
+('2','88');
+INSERT INTO `ps_access` VALUES
 ('2','129'),
 ('2','130'),
 ('2','131'),
@@ -616,8 +625,7 @@ INSERT INTO `ps_access` VALUES
 ('2','189'),
 ('2','190'),
 ('2','191'),
-('2','192');
-INSERT INTO `ps_access` VALUES
+('2','192'),
 ('2','209'),
 ('2','210'),
 ('2','211'),
@@ -809,7 +817,8 @@ INSERT INTO `ps_access` VALUES
 ('4','318'),
 ('4','319'),
 ('4','320'),
-('4','330'),
+('4','330');
+INSERT INTO `ps_access` VALUES
 ('4','349'),
 ('4','350'),
 ('4','351'),
@@ -817,8 +826,7 @@ INSERT INTO `ps_access` VALUES
 ('4','401'),
 ('4','402'),
 ('4','403'),
-('4','404');
-INSERT INTO `ps_access` VALUES
+('4','404'),
 ('4','437'),
 ('4','438'),
 ('4','439'),
@@ -877,7 +885,7 @@ CREATE TABLE `ps_address` (
   KEY `id_manufacturer` (`id_manufacturer`),
   KEY `id_supplier` (`id_supplier`),
   KEY `id_warehouse` (`id_warehouse`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_address` VALUES
 ('1','14','0','1','0','0','0','Anonymous','Anonymous','Anonymous','Anonymous','Anonymous',NULL,'00000','Anonymous',NULL,'0000000000','0000000000','0000','0000','2023-10-22 18:41:17','2023-10-22 18:41:17','1','0'),
@@ -885,7 +893,8 @@ INSERT INTO `ps_address` VALUES
 ('3','21','35','0','0','1','0','supplier','Fashion','supplier','supplier','767 Fifth Ave.',NULL,'10153','New York',NULL,'(212) 336-1440',NULL,NULL,NULL,'2023-10-22 18:41:22','2023-10-22 18:41:22','1','0'),
 ('4','21','35','0','1','0','0','manufacturer','Fashion','manufacturer','manufacturer','767 Fifth Ave.',NULL,'10154','New York',NULL,'(212) 336-1666',NULL,NULL,NULL,'2023-10-22 18:41:22','2023-10-22 18:41:22','1','0'),
 ('5','21','12','2','0','0','0','My address','My Company','DOE','John','16, Main street','2nd floor','33133','Miami',NULL,'0102030405',NULL,NULL,NULL,'2023-10-22 18:41:22','2023-10-22 18:41:22','1','0'),
-('6','8','0','0','0','2','0','accessories_supplier','Accessories and Co','accessories','accessories','42 Avenue Maréchal Soult',NULL,'64990','Bayonne',NULL,'0102030405',NULL,NULL,NULL,'2023-10-22 18:41:22','2023-10-22 18:41:22','1','0');
+('6','8','0','0','0','2','0','accessories_supplier','Accessories and Co','accessories','accessories','42 Avenue Maréchal Soult',NULL,'64990','Bayonne',NULL,'0102030405',NULL,NULL,NULL,'2023-10-22 18:41:22','2023-10-22 18:41:22','1','0'),
+('7','14','0','3','0','0','0','Mój adres',NULL,'mm','mm','qwertyui','qwertyu','80-000','Gdansk',NULL,'12345678',NULL,NULL,NULL,'2023-11-02 17:52:42','2023-11-02 17:52:42','1','0');
 /* Scheme for table ps_address_format */
 DROP TABLE IF EXISTS `ps_address_format`;
 CREATE TABLE `ps_address_format` (
@@ -1149,14 +1158,18 @@ CREATE TABLE `ps_admin_filter` (
   `filter_id` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `admin_filter_search_id_idx` (`employee`,`shop`,`controller`,`action`,`filter_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ps_admin_filter` VALUES
 ('1','1','1','ProductController','catalogAction','{\"filter_category\":\"\",\"filter_column_id_product\":\"\",\"filter_column_name\":\"\",\"filter_column_reference\":\"\",\"filter_column_name_category\":\"\",\"filter_column_price\":\"\",\"filter_column_sav_quantity\":\"\",\"filter_column_active\":\"\",\"last_offset\":\"0\",\"last_limit\":\"20\",\"last_orderBy\":\"id_product\",\"last_sortOrder\":\"desc\"}',''),
 ('2','1','1','','','{\"limit\":10,\"orderBy\":\"id_request_sql\",\"sortOrder\":\"desc\",\"filters\":[]}','sql_request'),
 ('3','1','1','backup','index','{\"limit\":20,\"orderBy\":null,\"sortOrder\":null,\"filters\":[]}',''),
 ('4','1','1','','','{\"limit\":50,\"orderBy\":\"id_webservice_account\",\"sortOrder\":\"asc\",\"filters\":[]}','webservice_key'),
-('5','1','1','','','{\"limit\":50,\"orderBy\":\"id_attachment\",\"sortOrder\":\"asc\",\"filters\":[]}','attachment');
+('5','1','1','','','{\"limit\":50,\"orderBy\":\"id_attachment\",\"sortOrder\":\"asc\",\"filters\":[]}','attachment'),
+('6','1','1','','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page_category'),
+('7','1','1','','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_cms_category_parent\":1}}','cms_page'),
+('8','1','1','','','{\"orderBy\":\"position\",\"sortOrder\":\"asc\",\"limit\":50,\"filters\":{\"id_category_parent\":\"2\"}}','category'),
+('9','1','1','email','index','{\"limit\":50,\"orderBy\":\"id_mail\",\"sortOrder\":\"desc\",\"filters\":[]}','');
 /* Scheme for table ps_alias */
 DROP TABLE IF EXISTS `ps_alias`;
 CREATE TABLE `ps_alias` (
@@ -1368,7 +1381,7 @@ CREATE TABLE `ps_authorization_role` (
   `slug` varchar(191) NOT NULL,
   PRIMARY KEY (`id_authorization_role`),
   UNIQUE KEY `slug` (`slug`)
-) ENGINE=InnoDB AUTO_INCREMENT=829 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=849 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_authorization_role` VALUES
 ('817','ROLE_MOD_MODULE_BLOCKREASSURANCE_CREATE'),
@@ -1427,6 +1440,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('816','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_DELETE'),
 ('814','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_READ'),
 ('815','ROLE_MOD_MODULE_PSXMARKETINGWITHGOOGLE_UPDATE'),
+('837','ROLE_MOD_MODULE_PS_ACCOUNTS_CREATE'),
+('840','ROLE_MOD_MODULE_PS_ACCOUNTS_DELETE'),
+('838','ROLE_MOD_MODULE_PS_ACCOUNTS_READ'),
+('839','ROLE_MOD_MODULE_PS_ACCOUNTS_UPDATE'),
 ('545','ROLE_MOD_MODULE_PS_BANNER_CREATE'),
 ('548','ROLE_MOD_MODULE_PS_BANNER_DELETE'),
 ('546','ROLE_MOD_MODULE_PS_BANNER_READ'),
@@ -1471,10 +1488,18 @@ INSERT INTO `ps_authorization_role` VALUES
 ('584','ROLE_MOD_MODULE_PS_DATAPRIVACY_DELETE'),
 ('582','ROLE_MOD_MODULE_PS_DATAPRIVACY_READ'),
 ('583','ROLE_MOD_MODULE_PS_DATAPRIVACY_UPDATE'),
+('845','ROLE_MOD_MODULE_PS_EMAILALERTS_CREATE'),
+('848','ROLE_MOD_MODULE_PS_EMAILALERTS_DELETE'),
+('846','ROLE_MOD_MODULE_PS_EMAILALERTS_READ'),
+('847','ROLE_MOD_MODULE_PS_EMAILALERTS_UPDATE'),
 ('585','ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_CREATE'),
 ('588','ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_DELETE'),
 ('586','ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_READ'),
 ('587','ROLE_MOD_MODULE_PS_EMAILSUBSCRIPTION_UPDATE'),
+('841','ROLE_MOD_MODULE_PS_EVENTBUS_CREATE'),
+('844','ROLE_MOD_MODULE_PS_EVENTBUS_DELETE'),
+('842','ROLE_MOD_MODULE_PS_EVENTBUS_READ'),
+('843','ROLE_MOD_MODULE_PS_EVENTBUS_UPDATE'),
 ('801','ROLE_MOD_MODULE_PS_FACEBOOK_CREATE'),
 ('804','ROLE_MOD_MODULE_PS_FACEBOOK_DELETE'),
 ('802','ROLE_MOD_MODULE_PS_FACEBOOK_READ'),
@@ -1558,7 +1583,8 @@ INSERT INTO `ps_authorization_role` VALUES
 ('673','ROLE_MOD_MODULE_STATSBESTVOUCHERS_CREATE'),
 ('676','ROLE_MOD_MODULE_STATSBESTVOUCHERS_DELETE'),
 ('674','ROLE_MOD_MODULE_STATSBESTVOUCHERS_READ'),
-('675','ROLE_MOD_MODULE_STATSBESTVOUCHERS_UPDATE'),
+('675','ROLE_MOD_MODULE_STATSBESTVOUCHERS_UPDATE');
+INSERT INTO `ps_authorization_role` VALUES
 ('677','ROLE_MOD_MODULE_STATSCARRIER_CREATE'),
 ('680','ROLE_MOD_MODULE_STATSCARRIER_DELETE'),
 ('678','ROLE_MOD_MODULE_STATSCARRIER_READ'),
@@ -1570,8 +1596,7 @@ INSERT INTO `ps_authorization_role` VALUES
 ('685','ROLE_MOD_MODULE_STATSCHECKUP_CREATE'),
 ('688','ROLE_MOD_MODULE_STATSCHECKUP_DELETE'),
 ('686','ROLE_MOD_MODULE_STATSCHECKUP_READ'),
-('687','ROLE_MOD_MODULE_STATSCHECKUP_UPDATE');
-INSERT INTO `ps_authorization_role` VALUES
+('687','ROLE_MOD_MODULE_STATSCHECKUP_UPDATE'),
 ('689','ROLE_MOD_MODULE_STATSDATA_CREATE'),
 ('692','ROLE_MOD_MODULE_STATSDATA_DELETE'),
 ('690','ROLE_MOD_MODULE_STATSDATA_READ'),
@@ -1636,6 +1661,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('772','ROLE_MOD_TAB_ADMINAJAXPRESTASHOPCHECKOUT_DELETE'),
 ('770','ROLE_MOD_TAB_ADMINAJAXPRESTASHOPCHECKOUT_READ'),
 ('771','ROLE_MOD_TAB_ADMINAJAXPRESTASHOPCHECKOUT_UPDATE'),
+('829','ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_CREATE'),
+('832','ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_DELETE'),
+('830','ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_READ'),
+('831','ROLE_MOD_TAB_ADMINAJAXPSACCOUNTS_UPDATE'),
 ('797','ROLE_MOD_TAB_ADMINAJAXPSFACEBOOK_CREATE'),
 ('800','ROLE_MOD_TAB_ADMINAJAXPSFACEBOOK_DELETE'),
 ('798','ROLE_MOD_TAB_ADMINAJAXPSFACEBOOK_READ'),
@@ -1724,6 +1753,10 @@ INSERT INTO `ps_authorization_role` VALUES
 ('516','ROLE_MOD_TAB_ADMINDASHGOALS_DELETE'),
 ('514','ROLE_MOD_TAB_ADMINDASHGOALS_READ'),
 ('515','ROLE_MOD_TAB_ADMINDASHGOALS_UPDATE'),
+('833','ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_CREATE'),
+('836','ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_DELETE'),
+('834','ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_READ'),
+('835','ROLE_MOD_TAB_ADMINDEBUGPSACCOUNTS_UPDATE'),
 ('85','ROLE_MOD_TAB_ADMINDELIVERYSLIP_CREATE'),
 ('88','ROLE_MOD_TAB_ADMINDELIVERYSLIP_DELETE'),
 ('86','ROLE_MOD_TAB_ADMINDELIVERYSLIP_READ'),
@@ -1751,7 +1784,8 @@ INSERT INTO `ps_authorization_role` VALUES
 ('101','ROLE_MOD_TAB_ADMINGENDERS_CREATE'),
 ('104','ROLE_MOD_TAB_ADMINGENDERS_DELETE'),
 ('102','ROLE_MOD_TAB_ADMINGENDERS_READ'),
-('103','ROLE_MOD_TAB_ADMINGENDERS_UPDATE'),
+('103','ROLE_MOD_TAB_ADMINGENDERS_UPDATE');
+INSERT INTO `ps_authorization_role` VALUES
 ('105','ROLE_MOD_TAB_ADMINGEOLOCATION_CREATE'),
 ('108','ROLE_MOD_TAB_ADMINGEOLOCATION_DELETE'),
 ('106','ROLE_MOD_TAB_ADMINGEOLOCATION_READ'),
@@ -1771,8 +1805,7 @@ INSERT INTO `ps_authorization_role` VALUES
 ('121','ROLE_MOD_TAB_ADMININFORMATION_CREATE'),
 ('124','ROLE_MOD_TAB_ADMININFORMATION_DELETE'),
 ('122','ROLE_MOD_TAB_ADMININFORMATION_READ'),
-('123','ROLE_MOD_TAB_ADMININFORMATION_UPDATE');
-INSERT INTO `ps_authorization_role` VALUES
+('123','ROLE_MOD_TAB_ADMININFORMATION_UPDATE'),
 ('125','ROLE_MOD_TAB_ADMININTERNATIONAL_CREATE'),
 ('128','ROLE_MOD_TAB_ADMININTERNATIONAL_DELETE'),
 ('126','ROLE_MOD_TAB_ADMININTERNATIONAL_READ'),
@@ -1952,7 +1985,8 @@ INSERT INTO `ps_authorization_role` VALUES
 ('273','ROLE_MOD_TAB_ADMINPARENTSTOCKMANAGEMENT_CREATE'),
 ('276','ROLE_MOD_TAB_ADMINPARENTSTOCKMANAGEMENT_DELETE'),
 ('274','ROLE_MOD_TAB_ADMINPARENTSTOCKMANAGEMENT_READ'),
-('275','ROLE_MOD_TAB_ADMINPARENTSTOCKMANAGEMENT_UPDATE'),
+('275','ROLE_MOD_TAB_ADMINPARENTSTOCKMANAGEMENT_UPDATE');
+INSERT INTO `ps_authorization_role` VALUES
 ('277','ROLE_MOD_TAB_ADMINPARENTSTORES_CREATE'),
 ('280','ROLE_MOD_TAB_ADMINPARENTSTORES_DELETE'),
 ('278','ROLE_MOD_TAB_ADMINPARENTSTORES_READ'),
@@ -1972,8 +2006,7 @@ INSERT INTO `ps_authorization_role` VALUES
 ('289','ROLE_MOD_TAB_ADMINPAYMENT_CREATE'),
 ('292','ROLE_MOD_TAB_ADMINPAYMENT_DELETE'),
 ('290','ROLE_MOD_TAB_ADMINPAYMENT_READ'),
-('291','ROLE_MOD_TAB_ADMINPAYMENT_UPDATE');
-INSERT INTO `ps_authorization_role` VALUES
+('291','ROLE_MOD_TAB_ADMINPAYMENT_UPDATE'),
 ('773','ROLE_MOD_TAB_ADMINPAYPALONBOARDINGPRESTASHOPCHECKOUT_CREATE'),
 ('776','ROLE_MOD_TAB_ADMINPAYPALONBOARDINGPRESTASHOPCHECKOUT_DELETE'),
 ('774','ROLE_MOD_TAB_ADMINPAYPALONBOARDINGPRESTASHOPCHECKOUT_READ'),
@@ -2153,7 +2186,8 @@ INSERT INTO `ps_authorization_role` VALUES
 ('433','ROLE_MOD_TAB_ADMINWAREHOUSES_CREATE'),
 ('436','ROLE_MOD_TAB_ADMINWAREHOUSES_DELETE'),
 ('434','ROLE_MOD_TAB_ADMINWAREHOUSES_READ'),
-('435','ROLE_MOD_TAB_ADMINWAREHOUSES_UPDATE'),
+('435','ROLE_MOD_TAB_ADMINWAREHOUSES_UPDATE');
+INSERT INTO `ps_authorization_role` VALUES
 ('437','ROLE_MOD_TAB_ADMINWEBSERVICE_CREATE'),
 ('440','ROLE_MOD_TAB_ADMINWEBSERVICE_DELETE'),
 ('438','ROLE_MOD_TAB_ADMINWEBSERVICE_READ'),
@@ -2173,8 +2207,7 @@ INSERT INTO `ps_authorization_role` VALUES
 ('449','ROLE_MOD_TAB_IMPROVE_CREATE'),
 ('452','ROLE_MOD_TAB_IMPROVE_DELETE'),
 ('450','ROLE_MOD_TAB_IMPROVE_READ'),
-('451','ROLE_MOD_TAB_IMPROVE_UPDATE');
-INSERT INTO `ps_authorization_role` VALUES
+('451','ROLE_MOD_TAB_IMPROVE_UPDATE'),
 ('789','ROLE_MOD_TAB_MARKETING_CREATE'),
 ('792','ROLE_MOD_TAB_MARKETING_DELETE'),
 ('790','ROLE_MOD_TAB_MARKETING_READ'),
@@ -2239,13 +2272,17 @@ CREATE TABLE `ps_carrier` (
   KEY `deleted` (`deleted`,`active`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `reference` (`id_reference`,`deleted`,`active`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_carrier` VALUES
 ('1','1','0','0',NULL,'1','0','0','0','0','1','0','0',NULL,'0','0','0','0','0','0.000000','0'),
-('2','2','0','My carrier',NULL,'1','0','1','0','0','0','0','0',NULL,'0','1','0','0','0','0.000000','0'),
-('3','3','0','My cheap carrier',NULL,'0','0','1','0','0','0','0','0',NULL,'2','2','0','0','0','0.000000','0'),
-('4','4','0','My light carrier',NULL,'0','0','1','0','0','0','0','0',NULL,'1','3','0','0','0','0.000000','0');
+('2','2','0','My carrier',NULL,'1','1','1','0','0','0','0','0',NULL,'1','1','0','0','0','0.000000','0'),
+('3','3','0','My cheap carrier',NULL,'0','1','1','0','0','0','0','0',NULL,'2','1','0','0','0','0.000000','0'),
+('4','4','0','My light carrier',NULL,'0','1','1','0','0','0','0','0',NULL,'1','2','0','0','0','0.000000','0'),
+('5','3','0','InProst',NULL,'1','1','1','0','0','0','0','0',NULL,'2','1','0','0','0','50.000000','0'),
+('6','4','0','Wygodna paczka',NULL,'1','1','1','0','0','0','0','0',NULL,'2','2','0','0','0','50.000000','0'),
+('7','3','0','InProst',NULL,'1','0','1','0','0','0','0','0',NULL,'2','1','0','0','0','50.000000','0'),
+('8','4','0','Wygodna paczka',NULL,'1','0','1','0','0','0','0','0',NULL,'2','2','0','0','0','50.000000','0');
 /* Scheme for table ps_carrier_group */
 DROP TABLE IF EXISTS `ps_carrier_group`;
 CREATE TABLE `ps_carrier_group` (
@@ -2266,7 +2303,19 @@ INSERT INTO `ps_carrier_group` VALUES
 ('3','3'),
 ('4','1'),
 ('4','2'),
-('4','3');
+('4','3'),
+('5','1'),
+('5','2'),
+('5','3'),
+('6','1'),
+('6','2'),
+('6','3'),
+('7','1'),
+('7','2'),
+('7','3'),
+('8','1'),
+('8','2'),
+('8','3');
 /* Scheme for table ps_carrier_lang */
 DROP TABLE IF EXISTS `ps_carrier_lang`;
 CREATE TABLE `ps_carrier_lang` (
@@ -2281,7 +2330,11 @@ INSERT INTO `ps_carrier_lang` VALUES
 ('1','1','1','Odbiór w sklepie'),
 ('2','1','1','Dostawa następnego dnia!'),
 ('3','1','1','Buy more to pay less!'),
-('4','1','1','The lighter the cheaper!');
+('4','1','1','The lighter the cheaper!'),
+('5','1','1','2-3 dni roboczych'),
+('6','1','1','5-6 dni roboczych'),
+('7','1','1','2-3 dni roboczych'),
+('8','1','1','5-6 dni roboczych');
 /* Scheme for table ps_carrier_shop */
 DROP TABLE IF EXISTS `ps_carrier_shop`;
 CREATE TABLE `ps_carrier_shop` (
@@ -2295,7 +2348,11 @@ INSERT INTO `ps_carrier_shop` VALUES
 ('1','1'),
 ('2','1'),
 ('3','1'),
-('4','1');
+('4','1'),
+('5','1'),
+('6','1'),
+('7','1'),
+('8','1');
 /* Scheme for table ps_carrier_tax_rules_group_shop */
 DROP TABLE IF EXISTS `ps_carrier_tax_rules_group_shop`;
 CREATE TABLE `ps_carrier_tax_rules_group_shop` (
@@ -2309,7 +2366,11 @@ INSERT INTO `ps_carrier_tax_rules_group_shop` VALUES
 ('1','1','1'),
 ('2','1','1'),
 ('3','1','1'),
-('4','1','1');
+('4','1','1'),
+('5','1','1'),
+('6','1','1'),
+('7','0','1'),
+('8','0','1');
 /* Scheme for table ps_carrier_zone */
 DROP TABLE IF EXISTS `ps_carrier_zone`;
 CREATE TABLE `ps_carrier_zone` (
@@ -2325,7 +2386,13 @@ INSERT INTO `ps_carrier_zone` VALUES
 ('3','1'),
 ('3','2'),
 ('4','1'),
-('4','2');
+('4','2'),
+('5','1'),
+('5','2'),
+('6','1'),
+('7','1'),
+('7','2'),
+('8','1');
 /* Scheme for table ps_cart */
 DROP TABLE IF EXISTS `ps_cart`;
 CREATE TABLE `ps_cart` (
@@ -2360,14 +2427,17 @@ CREATE TABLE `ps_cart` (
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop_2` (`id_shop`,`date_upd`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_cart` VALUES
 ('1','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL),
 ('2','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL),
 ('3','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL),
 ('4','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL),
-('5','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL);
+('5','1','1','2','{\"3\":\"2,\"}','1','5','5','1','2','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','0','0',NULL,'0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL),
+('6','1','1','8','{\"7\":\"8,\"}','1','7','7','1','3','1','04274362f4da7dd5371d574d53f1985d','0','0',NULL,'0','0','2023-11-02 17:51:22','2023-11-02 23:50:04','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"be7dc21efd54101c25aa6d32b0ede781fc6fa22e\"}'),
+('7','1','1','8','{\"7\":\"8,\"}','1','7','7','1','3','1','04274362f4da7dd5371d574d53f1985d','0','0',NULL,'0','0','2023-11-03 00:26:23','2023-11-03 00:26:49','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"2bf4ab91ba20c838f4cc8b63d1e7b949796a405f\"}'),
+('8','1','1','8','{\"7\":\"8,\"}','1','7','7','1','3','1','04274362f4da7dd5371d574d53f1985d','0','0',NULL,'0','0','2023-11-03 00:45:40','2023-11-03 00:45:56','{\"checkout-personal-information-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-addresses-step\":{\"step_is_reachable\":true,\"step_is_complete\":true,\"use_same_address\":true},\"checkout-delivery-step\":{\"step_is_reachable\":true,\"step_is_complete\":true},\"checkout-payment-step\":{\"step_is_reachable\":true,\"step_is_complete\":false},\"checksum\":\"be7dc21efd54101c25aa6d32b0ede781fc6fa22e\"}');
 /* Scheme for table ps_cart_cart_rule */
 DROP TABLE IF EXISTS `ps_cart_cart_rule`;
 CREATE TABLE `ps_cart_cart_rule` (
@@ -2400,7 +2470,10 @@ INSERT INTO `ps_cart_product` VALUES
 ('2','8','3','1','0','0','1','0000-00-00 00:00:00'),
 ('3','16','3','1','28','0','1','0000-00-00 00:00:00'),
 ('4','16','3','1','29','0','1','0000-00-00 00:00:00'),
-('5','10','3','1','25','0','1','0000-00-00 00:00:00');
+('5','10','3','1','25','0','1','0000-00-00 00:00:00'),
+('6','2','7','1','9','0','1','2023-11-02 17:51:22'),
+('7','1','7','1','2','0','1','2023-11-03 00:26:24'),
+('8','2','7','1','9','0','1','2023-11-03 00:45:40');
 /* Scheme for table ps_cart_rule */
 DROP TABLE IF EXISTS `ps_cart_rule`;
 CREATE TABLE `ps_cart_rule` (
@@ -2549,13 +2622,13 @@ CREATE TABLE `ps_category` (
 INSERT INTO `ps_category` VALUES
 ('1','0','1','0','1','18','1','2023-10-22 18:40:44','2023-10-22 18:40:44','0','0'),
 ('2','1','1','1','2','17','1','2023-10-22 18:40:44','2023-10-22 18:40:44','0','1'),
-('3','2','1','2','3','8','1','2023-10-22 18:41:22','2023-10-22 18:41:22','0','0'),
+('3','2','1','2','3','8','0','2023-10-22 18:41:22','2023-11-02 23:13:39','0','0'),
 ('4','3','1','3','4','5','1','2023-10-22 18:41:22','2023-10-22 18:41:22','0','0'),
 ('5','3','1','3','6','7','1','2023-10-22 18:41:23','2023-10-22 18:41:23','1','0'),
-('6','2','1','2','9','14','1','2023-10-22 18:41:23','2023-10-22 18:41:23','1','0'),
+('6','2','1','2','9','14','0','2023-10-22 18:41:23','2023-11-02 23:13:40','1','0'),
 ('7','6','1','3','10','11','1','2023-10-22 18:41:23','2023-10-22 18:41:23','0','0'),
 ('8','6','1','3','12','13','1','2023-10-22 18:41:23','2023-10-22 18:41:23','1','0'),
-('9','2','1','2','15','16','1','2023-10-22 18:41:23','2023-10-22 18:41:23','2','0');
+('9','2','1','2','15','16','0','2023-10-22 18:41:23','2023-11-02 23:13:41','2','0');
 /* Scheme for table ps_category_group */
 DROP TABLE IF EXISTS `ps_category_group`;
 CREATE TABLE `ps_category_group` (
@@ -2836,7 +2909,7 @@ CREATE TABLE `ps_configuration` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=426 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=459 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_configuration` VALUES
 ('1',NULL,NULL,'PS_LANG_DEFAULT','1','2023-10-22 18:40:44','2023-10-22 18:40:44'),
@@ -3075,8 +3148,8 @@ INSERT INTO `ps_configuration` VALUES
 ('233',NULL,NULL,'PS_BASE_DISTANCE_UNIT','m','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 ('234',NULL,NULL,'PS_SHOP_DOMAIN','localhost:8001','0000-00-00 00:00:00','2023-10-22 18:40:45'),
 ('235',NULL,NULL,'PS_SHOP_DOMAIN_SSL','localhost:8001','0000-00-00 00:00:00','2023-10-22 18:40:45'),
-('236',NULL,NULL,'PS_SHOP_NAME','PrestaShop','0000-00-00 00:00:00','0000-00-00 00:00:00'),
-('237',NULL,NULL,'PS_SHOP_EMAIL','demo@prestashop.com','0000-00-00 00:00:00','2023-10-22 18:40:45'),
+('236',NULL,NULL,'PS_SHOP_NAME','Miotła Hermiony','0000-00-00 00:00:00','2023-11-02 18:50:28'),
+('237',NULL,NULL,'PS_SHOP_EMAIL','miotlahermiony@prestashop.com','0000-00-00 00:00:00','2023-11-02 18:50:28'),
 ('238',NULL,NULL,'PS_MAIL_METHOD','1','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 ('239',NULL,NULL,'PS_SHOP_ACTIVITY','Animaux','0000-00-00 00:00:00','0000-00-00 00:00:00'),
 ('240',NULL,NULL,'PS_LOGO','logo.png','0000-00-00 00:00:00','0000-00-00 00:00:00'),
@@ -3201,7 +3274,7 @@ INSERT INTO `ps_configuration` VALUES
 ('368',NULL,NULL,'PSGDPR_CUSTOMER_FORM',NULL,'2023-10-22 18:41:17','2023-10-22 18:41:17'),
 ('369',NULL,NULL,'PSGDPR_ANONYMOUS_CUSTOMER','1','2023-10-22 18:41:17','2023-10-22 18:41:17'),
 ('370',NULL,NULL,'PSGDPR_ANONYMOUS_ADDRESS','1','2023-10-22 18:41:17','2023-10-22 18:41:17'),
-('371',NULL,NULL,'PS_MBO_SHOP_ADMIN_UUID','e50b7d3e-c3c0-4e1e-a7ea-60934b629ad9','2023-10-22 18:41:17','2023-10-22 18:41:17'),
+('371',NULL,NULL,'PS_MBO_SHOP_ADMIN_UUID','6317ddd2-71c5-4912-8b72-9a560bff7103','2023-10-22 18:41:17','2023-11-02 18:54:33'),
 ('372',NULL,NULL,'CONF_PS_CHECKOUT_FIXED','0.2','2023-10-22 18:41:17','2023-10-22 18:41:17'),
 ('373',NULL,NULL,'CONF_PS_CHECKOUT_VAR','2','2023-10-22 18:41:17','2023-10-22 18:41:17'),
 ('374',NULL,NULL,'CONF_PS_CHECKOUT_FIXED_FOREIGN','0.2','2023-10-22 18:41:17','2023-10-22 18:41:17'),
@@ -3256,7 +3329,40 @@ INSERT INTO `ps_configuration` VALUES
 ('422',NULL,NULL,'PS_LAYERED_FILTER_SHOW_OUT_OF_STOCK_LAST','0','2023-10-22 18:41:24','2023-10-22 18:41:24'),
 ('423',NULL,NULL,'PS_LAYERED_FILTER_BY_DEFAULT_CATEGORY','0','2023-10-22 18:41:24','2023-10-22 18:41:24'),
 ('424',NULL,NULL,'PS_LAYERED_INDEXED','1','2023-10-22 18:41:25','2023-10-22 18:41:25'),
-('425',NULL,NULL,'ONBOARDINGV2_CURRENT_STEP','11','2023-10-22 18:50:10','2023-10-22 18:57:48');
+('425',NULL,NULL,'ONBOARDINGV2_CURRENT_STEP','11','2023-10-22 18:50:10','2023-10-22 18:57:48'),
+('426',NULL,NULL,'PS_SHOWCASECARD_CMS_PAGES_CLOSED','1','2023-11-02 18:24:37','2023-11-02 18:24:37'),
+('427',NULL,NULL,'PS_SHOP_DETAILS',NULL,'2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('428',NULL,NULL,'PS_SHOP_ADDR1',NULL,'2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('429',NULL,NULL,'PS_SHOP_ADDR2',NULL,'2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('430',NULL,NULL,'PS_SHOP_CODE','80-000','2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('431',NULL,NULL,'PS_SHOP_CITY','Gdańsk','2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('432',NULL,NULL,'PS_SHOP_COUNTRY_ID','14','2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('433',NULL,NULL,'PS_SHOP_COUNTRY','Polska','2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('434',NULL,NULL,'PS_SHOP_PHONE','+48 111222333','2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('435',NULL,NULL,'PS_SHOP_FAX',NULL,'2023-11-02 18:29:39','2023-11-02 18:29:39'),
+('436',NULL,NULL,'CHEQUE_NAME','Miotla Hermiony CO','2023-11-03 00:20:50','2023-11-03 00:20:50'),
+('437',NULL,NULL,'CHEQUE_ADDRESS','Gabriela Narutowicza 11/12','2023-11-03 00:20:50','2023-11-03 00:20:50'),
+('438',NULL,NULL,'PS_ACCOUNTS_RSA_PRIVATE_KEY','-----BEGIN RSA PRIVATE KEY-----\r\nMIICXgIBAAKBgQD2ACp7cqiIDgURXcW8u65VSvzVuWxNnFG5z59TD3jI74vE3URe\r\nRe2J4rZLoSFWeCKziSfwvQGdGRrddjH9KOhZSQFLRwIMwdTqBH0SYmmsbG8haN2+\r\nYXmv+vUJe9gAtrvIrEcsu0dw3Dm2kCDHGQ+HBclH6uVQR//vJEgekUfQ8wIDAQAB\r\nAoGAKhm9K4Nj9GTx2RcDUFmObGp4+trQ/jdShUpTKhPrx/e3I+n6WWf+TyrNqAPb\r\ngMDur2s5uqmeLRSu1Ff2Fi16FffRRQSFzP8GGY+ft6U1ZOEOBsA0Gy3GMj5poEIe\r\nOl7GmK/iQJCahrOcNDrq9WjOy2QHQCdDKsj+ofLX7SQC6wECQQD+JIIVETyZoQmP\r\nG/mbasa7yqnP3y1nXZDwarzg9aCvbrbyIr3sLocPP3kjje8i1dEBgwnJFfPiyBrh\r\nR4DkqGUrAkEA98xsq02JkJO5+47x9Fjemqoh0Vn4SJhJTF6Bp7NYbYhs4JphO05u\r\nCv5xe+4iYAkLaEbgrTzfONCYViHZSx1vWQJBAMBOcdxtMZTypWAUBBmVf5IkdcCl\r\nGR9JTt6NdiUn2JJHTcoFff9U6cAhAJJl2VlbwA7L0EDICsdFMgnb6G2d+wcCQQCp\r\nG3xJx4eLABXbZCkg/QkledfMXF8Bg9P550EKZm2Biqnq+dBDPfoBTLW7wr741RNQ\r\n3ZX1A+a+ijR8C2uURIk5AkEAryXWR/4xr0MgxvmAWVZrDk/HTTFTapt5NqUUDIwQ\r\ndR9DpoZcOSp+RWW7TDPbj3WMfv05S7XUgWax3YDzZQ76Lw==\r\n-----END RSA PRIVATE KEY-----','2023-11-03 00:21:48','2023-11-03 00:21:48'),
+('439',NULL,NULL,'PS_ACCOUNTS_RSA_PUBLIC_KEY','-----BEGIN RSA PUBLIC KEY-----\r\nMIGJAoGBAPYAKntyqIgOBRFdxby7rlVK/NW5bE2cUbnPn1MPeMjvi8TdRF5F7Yni\r\ntkuhIVZ4IrOJJ/C9AZ0ZGt12Mf0o6FlJAUtHAgzB1OoEfRJiaaxsbyFo3b5hea/6\r\n9Ql72AC2u8isRyy7R3DcObaQIMcZD4cFyUfq5VBH/+8kSB6RR9DzAgMBAAE=\r\n-----END RSA PUBLIC KEY-----','2023-11-03 00:21:48','2023-11-03 00:21:48'),
+('440',NULL,NULL,'PS_ACCOUNTS_RSA_SIGN_DATA','RpL8kW0wplIkDOAOsdCzWBg2yZD00e2q0Fx+yX25/m6lVhiku4cMKNONWTBceRGkxvxwYyDsGY3Owj26Zpb1lo3COfocEf8WFOp/efhQPjpOI1d0svk3HUlaLo5jNxNEpkCzhJ1QFpVQhS5FYrUSSlEESnoKFdxauGT7+9WxgJw=','2023-11-03 00:21:48','2023-11-03 00:21:48'),
+('441',NULL,NULL,'BANK_WIRE_DETAILS','69000000000000000000000','2023-11-03 00:45:18','2023-11-03 00:45:18'),
+('442',NULL,NULL,'BANK_WIRE_OWNER','Mariia Kyrychenko','2023-11-03 00:45:18','2023-11-03 00:45:18'),
+('443',NULL,NULL,'BANK_WIRE_ADDRESS','  Aleja Grunwaldzka 105','2023-11-03 00:45:18','2023-11-03 00:45:18'),
+('444',NULL,NULL,'BANK_WIRE_RESERVATION_DAYS',NULL,'2023-11-03 00:45:18','2023-11-03 00:45:18'),
+('445',NULL,NULL,'BANK_WIRE_CUSTOM_TEXT',NULL,'2023-11-03 00:45:18','2023-11-03 00:45:18'),
+('446',NULL,NULL,'PS_ACCOUNTS_ACCOUNTS_CLIENT_FAILURE_COUNT','0','2023-11-03 00:54:56','2023-11-03 00:54:56'),
+('447',NULL,NULL,'PS_ACCOUNTS_ACCOUNTS_CLIENT_LAST_FAILURE_TIME',NULL,'2023-11-03 00:54:56','2023-11-03 00:54:56'),
+('448',NULL,NULL,'PS_ACCOUNTS_SSO_CLIENT_FAILURE_COUNT','0','2023-11-03 00:54:56','2023-11-03 00:54:56'),
+('449',NULL,NULL,'PS_ACCOUNTS_SSO_CLIENT_LAST_FAILURE_TIME',NULL,'2023-11-03 00:54:56','2023-11-03 00:54:56'),
+('450',NULL,NULL,'MA_MERCHANT_ORDER','1','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('451',NULL,NULL,'MA_MERCHANT_OOS','1','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('452',NULL,NULL,'MA_CUSTOMER_QTY','1','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('453',NULL,NULL,'MA_ORDER_EDIT','1','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('454',NULL,NULL,'MA_RETURN_SLIP','1','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('455',NULL,NULL,'MA_MERCHANT_MAILS','miotlahermiony@prestashop.com','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('456',NULL,NULL,'MA_LAST_QTIES','3','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('457',NULL,NULL,'MA_MERCHANT_COVERAGE','0','2023-11-03 00:54:57','2023-11-03 00:54:57'),
+('458',NULL,NULL,'MA_PRODUCT_COVERAGE','0','2023-11-03 00:54:57','2023-11-03 00:54:57');
 /* Scheme for table ps_configuration_kpi */
 DROP TABLE IF EXISTS `ps_configuration_kpi`;
 CREATE TABLE `ps_configuration_kpi` (
@@ -3271,7 +3377,7 @@ CREATE TABLE `ps_configuration_kpi` (
   KEY `name` (`name`),
   KEY `id_shop` (`id_shop`),
   KEY `id_shop_group` (`id_shop_group`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_configuration_kpi` VALUES
 ('1',NULL,NULL,'DASHGOALS_TRAFFIC_01_2023','600','2023-10-22 18:40:46','2023-10-22 18:40:46'),
@@ -3309,7 +3415,15 @@ INSERT INTO `ps_configuration_kpi` VALUES
 ('33',NULL,NULL,'DASHGOALS_AVG_CART_VALUE_11_2023','80','2023-10-22 18:40:47','2023-10-22 18:40:47'),
 ('34',NULL,NULL,'DASHGOALS_TRAFFIC_12_2023','600','2023-10-22 18:40:47','2023-10-22 18:40:47'),
 ('35',NULL,NULL,'DASHGOALS_CONVERSION_12_2023','2','2023-10-22 18:40:47','2023-10-22 18:40:47'),
-('36',NULL,NULL,'DASHGOALS_AVG_CART_VALUE_12_2023','80','2023-10-22 18:40:47','2023-10-22 18:40:47');
+('36',NULL,NULL,'DASHGOALS_AVG_CART_VALUE_12_2023','80','2023-10-22 18:40:47','2023-10-22 18:40:47'),
+('37',NULL,NULL,'PRODUCTS_PER_CATEGORY','2','2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('38',NULL,NULL,'PRODUCTS_PER_CATEGORY_EXPIRE','1698966792','2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('39',NULL,NULL,'DISABLED_CATEGORIES','0','2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('40',NULL,NULL,'DISABLED_CATEGORIES_EXPIRE','1698970392','2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('41',NULL,NULL,'EMPTY_CATEGORIES','0','2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('42',NULL,NULL,'EMPTY_CATEGORIES_EXPIRE','1698970392','2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('43',NULL,NULL,'TOP_CATEGORY',NULL,'2023-11-02 23:13:12','2023-11-02 23:13:12'),
+('44',NULL,NULL,'TOP_CATEGORY_EXPIRE',NULL,'2023-11-02 23:13:12','2023-11-02 23:13:12');
 /* Scheme for table ps_configuration_kpi_lang */
 DROP TABLE IF EXISTS `ps_configuration_kpi_lang`;
 CREATE TABLE `ps_configuration_kpi_lang` (
@@ -3320,6 +3434,9 @@ CREATE TABLE `ps_configuration_kpi_lang` (
   PRIMARY KEY (`id_configuration_kpi`,`id_lang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `ps_configuration_kpi_lang` VALUES
+('43','1','Stationery','2023-11-02 23:13:12'),
+('44','1','1699049592','2023-11-02 23:13:12');
 /* Scheme for table ps_configuration_lang */
 DROP TABLE IF EXISTS `ps_configuration_lang`;
 CREATE TABLE `ps_configuration_lang` (
@@ -3349,7 +3466,8 @@ INSERT INTO `ps_configuration_lang` VALUES
 ('328','1','The personal data you provide is used to answer queries, process orders or allow access to specific information. You have the right to modify and delete all the personal information found in the \"My Account\" page.','2023-10-22 18:40:48'),
 ('330','1','Możesz zrezygnować w każdej chwili. W tym celu należy odnaleźć szczegóły w naszej informacji prawnej.','2023-10-22 18:40:48'),
 ('366','1','Akceptuję ogólne warunki użytkowania i politykę prywatności','2023-10-22 18:41:17'),
-('368','1','Akceptuję ogólne warunki użytkowania i politykę prywatności','2023-10-22 18:41:17');
+('368','1','Akceptuję ogólne warunki użytkowania i politykę prywatności','2023-10-22 18:41:17'),
+('445','1',NULL,'2023-11-03 00:45:18');
 /* Scheme for table ps_connections */
 DROP TABLE IF EXISTS `ps_connections`;
 CREATE TABLE `ps_connections` (
@@ -3365,7 +3483,7 @@ CREATE TABLE `ps_connections` (
   KEY `id_guest` (`id_guest`),
   KEY `date_add` (`date_add`),
   KEY `id_page` (`id_page`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_connections_page */
 DROP TABLE IF EXISTS `ps_connections_page`;
@@ -3391,7 +3509,7 @@ CREATE TABLE `ps_connections_source` (
   KEY `orderby` (`date_add`),
   KEY `http_referer` (`http_referer`),
   KEY `request_uri` (`request_uri`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_contact */
 DROP TABLE IF EXISTS `ps_contact`;
@@ -4284,11 +4402,12 @@ CREATE TABLE `ps_customer` (
   KEY `id_gender` (`id_gender`),
   KEY `id_shop_group` (`id_shop_group`),
   KEY `id_shop` (`id_shop`,`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_customer` VALUES
 ('1','1','1','1','3','1','0',NULL,NULL,NULL,'Anonymous','Anonymous','anonymous@psgdpr.com','$2y$10$ZmIY5Th/mY68MZdD0Iy4M.rzlXZWCqWqd.0lb4F.4OXaXVnOcoX4O','2023-10-22 12:41:17','0000-00-00','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','3ea2a4b6abbf75e0c6d6673faf832436',NULL,'0','0','0','2023-10-22 18:41:17','2023-10-22 18:41:17',NULL,'0000-00-00 00:00:00'),
-('2','1','1','1','3','1','0',NULL,NULL,NULL,'John','DOE','pub@prestashop.com','83e4bdefe7ee5ef98d85b5479e507ecc','2023-10-22 12:41:22','1970-01-15','1',NULL,'2013-12-13 08:19:15','1',NULL,'0.000000','0','0','d7d16a199cb25b208e2bae9b5d005174',NULL,'1','0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL,'0000-00-00 00:00:00');
+('2','1','1','1','3','1','0',NULL,NULL,NULL,'John','DOE','pub@prestashop.com','83e4bdefe7ee5ef98d85b5479e507ecc','2023-10-22 12:41:22','1970-01-15','1',NULL,'2013-12-13 08:19:15','1',NULL,'0.000000','0','0','d7d16a199cb25b208e2bae9b5d005174',NULL,'1','0','0','2023-10-22 18:41:22','2023-10-22 18:41:22',NULL,'0000-00-00 00:00:00'),
+('3','1','1','2','3','1','0',NULL,NULL,NULL,'mm','mm','mm@gmail.com','$2y$10$Xo7Ka0MGToY.p2RP6RLudOLKOwLQaDiZFETq8Kqy6VGC0nkM7Lkya','2023-11-02 11:52:13','2003-07-09','0',NULL,'0000-00-00 00:00:00','0',NULL,'0.000000','0','0','04274362f4da7dd5371d574d53f1985d',NULL,'1','0','0','2023-11-02 17:52:13','2023-11-02 17:52:13',NULL,'0000-00-00 00:00:00');
 /* Scheme for table ps_customer_group */
 DROP TABLE IF EXISTS `ps_customer_group`;
 CREATE TABLE `ps_customer_group` (
@@ -4301,7 +4420,8 @@ CREATE TABLE `ps_customer_group` (
 
 INSERT INTO `ps_customer_group` VALUES
 ('1','3'),
-('2','3');
+('2','3'),
+('3','3');
 /* Scheme for table ps_customer_message */
 DROP TABLE IF EXISTS `ps_customer_message`;
 CREATE TABLE `ps_customer_message` (
@@ -4335,8 +4455,10 @@ CREATE TABLE `ps_customer_session` (
   `id_customer` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_customer_session`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `ps_customer_session` VALUES
+('1','3','1022359efb0b117d877e2db90062d352c857b7a7');
 /* Scheme for table ps_customer_thread */
 DROP TABLE IF EXISTS `ps_customer_thread`;
 CREATE TABLE `ps_customer_thread` (
@@ -4443,7 +4565,7 @@ CREATE TABLE `ps_delivery` (
   KEY `id_carrier` (`id_carrier`,`id_zone`),
   KEY `id_range_price` (`id_range_price`),
   KEY `id_range_weight` (`id_range_weight`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_delivery` VALUES
 ('1',NULL,NULL,'2','0','1','1','5.000000'),
@@ -4461,7 +4583,19 @@ INSERT INTO `ps_delivery` VALUES
 ('13',NULL,NULL,'4','0','3','1','2.000000'),
 ('14',NULL,NULL,'4','0','3','2','3.000000'),
 ('15',NULL,NULL,'4','0','4','1','5.000000'),
-('16',NULL,NULL,'4','0','4','2','6.000000');
+('16',NULL,NULL,'4','0','4','2','6.000000'),
+('19',NULL,NULL,'5','5',NULL,'1','25.000000'),
+('20',NULL,NULL,'5','5',NULL,'2','40.000000'),
+('23',NULL,NULL,'5','6',NULL,'1','0.000000'),
+('24',NULL,NULL,'5','6',NULL,'2','0.000000'),
+('26',NULL,NULL,'6','7',NULL,'1','5.000000'),
+('28',NULL,NULL,'6','8',NULL,'1','0.000000'),
+('31',NULL,NULL,'7','9',NULL,'1','25.000000'),
+('32',NULL,NULL,'7','9',NULL,'2','40.000000'),
+('35',NULL,NULL,'7','10',NULL,'1','0.000000'),
+('36',NULL,NULL,'7','10',NULL,'2','0.000000'),
+('38',NULL,NULL,'8','11',NULL,'1','5.000000'),
+('40',NULL,NULL,'8','12',NULL,'1','0.000000');
 /* Scheme for table ps_emailsubscription */
 DROP TABLE IF EXISTS `ps_emailsubscription`;
 CREATE TABLE `ps_emailsubscription` (
@@ -4516,7 +4650,7 @@ CREATE TABLE `ps_employee` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_employee` VALUES
-('1','1','1','Doe','John','demo@prestashop.com','$2y$10$3R8FZLZXGeVHHdp6l5tXP.E.1d1ZdDTkOKMulKXqByoCqq1Ypm9i6','2023-10-22 12:40:45','2023-09-22','2023-10-22','0000-00-00','0000-00-00','1',NULL,NULL,'default','theme.css','1','0','1','1',NULL,'5','0','2','2023-10-22',NULL,'0000-00-00 00:00:00','0');
+('1','1','1','Doe','John','demo@prestashop.com','$2y$10$3R8FZLZXGeVHHdp6l5tXP.E.1d1ZdDTkOKMulKXqByoCqq1Ypm9i6','2023-10-22 12:40:45','2023-09-22','2023-10-22','0000-00-00','0000-00-00','1',NULL,NULL,'default','theme.css','1','0','1','1',NULL,'5','0','2','2023-11-03',NULL,'0000-00-00 00:00:00','0');
 /* Scheme for table ps_employee_session */
 DROP TABLE IF EXISTS `ps_employee_session`;
 CREATE TABLE `ps_employee_session` (
@@ -4524,10 +4658,11 @@ CREATE TABLE `ps_employee_session` (
   `id_employee` int(10) unsigned DEFAULT NULL,
   `token` varchar(40) DEFAULT NULL,
   PRIMARY KEY (`id_employee_session`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_employee_session` VALUES
-('2','1','24501b0117aefaf85eed4423ef347f5f1cae8320');
+('2','1','24501b0117aefaf85eed4423ef347f5f1cae8320'),
+('4','1','97e1442bd6da5fc7fa6b809ef52accc91cd8b5b4');
 /* Scheme for table ps_employee_shop */
 DROP TABLE IF EXISTS `ps_employee_shop`;
 CREATE TABLE `ps_employee_shop` (
@@ -4539,6 +4674,50 @@ CREATE TABLE `ps_employee_shop` (
 
 INSERT INTO `ps_employee_shop` VALUES
 ('1','1');
+/* Scheme for table ps_eventbus_deleted_objects */
+DROP TABLE IF EXISTS `ps_eventbus_deleted_objects`;
+CREATE TABLE `ps_eventbus_deleted_objects` (
+  `type` varchar(50) NOT NULL,
+  `id_object` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`type`,`id_object`,`id_shop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/* Scheme for table ps_eventbus_incremental_sync */
+DROP TABLE IF EXISTS `ps_eventbus_incremental_sync`;
+CREATE TABLE `ps_eventbus_incremental_sync` (
+  `type` varchar(50) NOT NULL,
+  `id_object` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `lang_iso` varchar(3) NOT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`type`,`id_object`,`id_shop`,`lang_iso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `ps_eventbus_incremental_sync` VALUES
+('carts','7','1','pl','2023-11-03 00:26:49'),
+('carts','8','1','pl','2023-11-03 00:45:56'),
+('orders','7','1','pl','2023-11-03 00:27:02'),
+('orders','8','1','pl','2023-11-03 00:46:02');
+/* Scheme for table ps_eventbus_job */
+DROP TABLE IF EXISTS `ps_eventbus_job`;
+CREATE TABLE `ps_eventbus_job` (
+  `job_id` varchar(200) NOT NULL,
+  `created_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/* Scheme for table ps_eventbus_type_sync */
+DROP TABLE IF EXISTS `ps_eventbus_type_sync`;
+CREATE TABLE `ps_eventbus_type_sync` (
+  `type` varchar(50) NOT NULL,
+  `offset` int(10) unsigned NOT NULL DEFAULT '0',
+  `id_shop` int(10) unsigned NOT NULL,
+  `lang_iso` varchar(3) DEFAULT NULL,
+  `full_sync_finished` tinyint(1) NOT NULL DEFAULT '0',
+  `last_sync_date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 /* Scheme for table ps_fb_category_match */
 DROP TABLE IF EXISTS `ps_fb_category_match`;
 CREATE TABLE `ps_fb_category_match` (
@@ -4788,7 +4967,7 @@ CREATE TABLE `ps_guest` (
   KEY `id_customer` (`id_customer`),
   KEY `id_operating_system` (`id_operating_system`),
   KEY `id_web_browser` (`id_web_browser`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 /* Scheme for table ps_homeslider */
 DROP TABLE IF EXISTS `ps_homeslider`;
@@ -4843,7 +5022,7 @@ CREATE TABLE `ps_hook` (
   `position` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_hook`),
   UNIQUE KEY `hook_name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=751 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=801 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_hook` VALUES
 ('1','actionValidateOrder','New orders',NULL,'1','1'),
@@ -5595,7 +5774,57 @@ INSERT INTO `ps_hook` VALUES
 ('747','actionFacebookCallPixel','actionFacebookCallPixel',NULL,'1','1'),
 ('748','displayFooterAfter','displayFooterAfter',NULL,'1','1'),
 ('749','displayReassurance','displayReassurance',NULL,'1','1'),
-('750','displayCrossSellingShoppingCart','',NULL,'1','1');
+('750','displayCrossSellingShoppingCart','',NULL,'1','1'),
+('751','displayAccountUpdateWarning','Display account update warning','Show a warning message when the user wants to update his shop configuration','1','1'),
+('752','actionShopAccountLinkAfter','Shop linked event','Shop linked with PrestaShop Account','1','1'),
+('753','actionShopAccountUnlinkAfter','Shop unlinked event','Shop unlinked with PrestaShop Account','1','1'),
+('754','actionObjectShopUpdateAfter','actionObjectShopUpdateAfter',NULL,'1','1'),
+('755','actionObjectShopDeleteBefore','actionObjectShopDeleteBefore',NULL,'1','1'),
+('756','actionObjectCarrierAddAfter','actionObjectCarrierAddAfter',NULL,'1','1'),
+('757','actionObjectCarrierDeleteAfter','actionObjectCarrierDeleteAfter',NULL,'1','1'),
+('758','actionObjectCarrierUpdateAfter','actionObjectCarrierUpdateAfter',NULL,'1','1'),
+('759','actionObjectCartAddAfter','actionObjectCartAddAfter',NULL,'1','1'),
+('760','actionObjectCartUpdateAfter','actionObjectCartUpdateAfter',NULL,'1','1'),
+('761','actionObjectCombinationDeleteAfter','actionObjectCombinationDeleteAfter',NULL,'1','1'),
+('762','actionObjectCountryAddAfter','actionObjectCountryAddAfter',NULL,'1','1'),
+('763','actionObjectCountryDeleteAfter','actionObjectCountryDeleteAfter',NULL,'1','1'),
+('764','actionObjectCountryUpdateAfter','actionObjectCountryUpdateAfter',NULL,'1','1'),
+('765','actionObjectCurrencyAddAfter','actionObjectCurrencyAddAfter',NULL,'1','1'),
+('766','actionObjectCurrencyUpdateAfter','actionObjectCurrencyUpdateAfter',NULL,'1','1'),
+('767','actionObjectCustomerAddAfter','actionObjectCustomerAddAfter',NULL,'1','1'),
+('768','actionObjectCustomerDeleteAfter','actionObjectCustomerDeleteAfter',NULL,'1','1'),
+('769','actionObjectCustomerUpdateAfter','actionObjectCustomerUpdateAfter',NULL,'1','1'),
+('770','actionObjectImageAddAfter','actionObjectImageAddAfter',NULL,'1','1'),
+('771','actionObjectImageDeleteAfter','actionObjectImageDeleteAfter',NULL,'1','1'),
+('772','actionObjectImageUpdateAfter','actionObjectImageUpdateAfter',NULL,'1','1'),
+('773','actionObjectLanguageDeleteAfter','actionObjectLanguageDeleteAfter',NULL,'1','1'),
+('774','actionObjectLanguageUpdateAfter','actionObjectLanguageUpdateAfter',NULL,'1','1'),
+('775','actionObjectOrderAddAfter','actionObjectOrderAddAfter',NULL,'1','1'),
+('776','actionObjectOrderUpdateAfter','actionObjectOrderUpdateAfter',NULL,'1','1'),
+('777','actionObjectSpecificPriceAddAfter','actionObjectSpecificPriceAddAfter',NULL,'1','1'),
+('778','actionObjectSpecificPriceDeleteAfter','actionObjectSpecificPriceDeleteAfter',NULL,'1','1'),
+('779','actionObjectSpecificPriceUpdateAfter','actionObjectSpecificPriceUpdateAfter',NULL,'1','1'),
+('780','actionObjectStateAddAfter','actionObjectStateAddAfter',NULL,'1','1'),
+('781','actionObjectStateDeleteAfter','actionObjectStateDeleteAfter',NULL,'1','1'),
+('782','actionObjectStateUpdateAfter','actionObjectStateUpdateAfter',NULL,'1','1'),
+('783','actionObjectStockAddAfter','actionObjectStockAddAfter',NULL,'1','1'),
+('784','actionObjectStockUpdateAfter','actionObjectStockUpdateAfter',NULL,'1','1'),
+('785','actionObjectStoreAddAfter','actionObjectStoreAddAfter',NULL,'1','1'),
+('786','actionObjectStoreDeleteAfter','actionObjectStoreDeleteAfter',NULL,'1','1'),
+('787','actionObjectStoreUpdateAfter','actionObjectStoreUpdateAfter',NULL,'1','1'),
+('788','actionObjectTaxAddAfter','actionObjectTaxAddAfter',NULL,'1','1'),
+('789','actionObjectTaxDeleteAfter','actionObjectTaxDeleteAfter',NULL,'1','1'),
+('790','actionObjectTaxRulesGroupAddAfter','actionObjectTaxRulesGroupAddAfter',NULL,'1','1'),
+('791','actionObjectTaxRulesGroupDeleteAfter','actionObjectTaxRulesGroupDeleteAfter',NULL,'1','1'),
+('792','actionObjectTaxRulesGroupUpdateAfter','actionObjectTaxRulesGroupUpdateAfter',NULL,'1','1'),
+('793','actionObjectTaxUpdateAfter','actionObjectTaxUpdateAfter',NULL,'1','1'),
+('794','actionObjectWishlistAddAfter','actionObjectWishlistAddAfter',NULL,'1','1'),
+('795','actionObjectWishlistDeleteAfter','actionObjectWishlistDeleteAfter',NULL,'1','1'),
+('796','actionObjectWishlistUpdateAfter','actionObjectWishlistUpdateAfter',NULL,'1','1'),
+('797','actionObjectZoneAddAfter','actionObjectZoneAddAfter',NULL,'1','1'),
+('798','actionObjectZoneDeleteAfter','actionObjectZoneDeleteAfter',NULL,'1','1'),
+('799','actionObjectZoneUpdateAfter','actionObjectZoneUpdateAfter',NULL,'1','1'),
+('800','actionProductCoverage','actionProductCoverage',NULL,'1','1');
 /* Scheme for table ps_hook_alias */
 DROP TABLE IF EXISTS `ps_hook_alias`;
 CREATE TABLE `ps_hook_alias` (
@@ -5839,6 +6068,63 @@ INSERT INTO `ps_hook_module` VALUES
 ('61','1','710','1'),
 ('61','1','711','1'),
 ('61','1','712','1'),
+('62','1','107','1'),
+('62','1','751','1'),
+('62','1','752','1'),
+('62','1','753','1'),
+('62','1','754','1'),
+('62','1','755','1'),
+('63','1','316','1'),
+('63','1','756','1'),
+('63','1','757','1'),
+('63','1','758','1'),
+('63','1','759','1'),
+('63','1','760','1'),
+('63','1','761','1'),
+('63','1','762','1'),
+('63','1','763','1'),
+('63','1','764','1'),
+('63','1','765','1'),
+('63','1','766','1'),
+('63','1','767','1'),
+('63','1','768','1'),
+('63','1','769','1'),
+('63','1','770','1'),
+('63','1','771','1'),
+('63','1','772','1'),
+('63','1','773','1'),
+('63','1','774','1'),
+('63','1','775','1'),
+('63','1','776','1'),
+('63','1','777','1'),
+('63','1','778','1'),
+('63','1','779','1'),
+('63','1','780','1'),
+('63','1','781','1'),
+('63','1','782','1'),
+('63','1','783','1'),
+('63','1','784','1'),
+('63','1','785','1'),
+('63','1','786','1'),
+('63','1','787','1'),
+('63','1','788','1'),
+('63','1','789','1'),
+('63','1','790','1'),
+('63','1','791','1'),
+('63','1','792','1'),
+('63','1','793','1'),
+('63','1','794','1'),
+('63','1','795','1'),
+('63','1','796','1'),
+('63','1','797','1'),
+('63','1','798','1'),
+('63','1','799','1'),
+('64','1','1','1'),
+('64','1','8','1'),
+('64','1','57','1'),
+('64','1','65','1'),
+('64','1','116','1'),
+('64','1','800','1'),
 ('3','1','682','2'),
 ('4','1','688','2'),
 ('5','1','689','2'),
@@ -5851,7 +6137,8 @@ INSERT INTO `ps_hook_module` VALUES
 ('22','1','683','2'),
 ('22','1','694','2'),
 ('22','1','695','2'),
-('22','1','707','2'),
+('22','1','707','2');
+INSERT INTO `ps_hook_module` VALUES
 ('25','1','15','2'),
 ('25','1','28','2'),
 ('26','1','16','2'),
@@ -5868,6 +6155,27 @@ INSERT INTO `ps_hook_module` VALUES
 ('58','1','732','2'),
 ('59','1','743','2'),
 ('61','1','14','2'),
+('62','1','140','2'),
+('62','1','736','2'),
+('62','1','738','2'),
+('62','1','739','2'),
+('63','1','696','2'),
+('63','1','715','2'),
+('63','1','716','2'),
+('63','1','717','2'),
+('63','1','721','2'),
+('63','1','722','2'),
+('63','1','723','2'),
+('63','1','724','2'),
+('63','1','725','2'),
+('63','1','726','2'),
+('63','1','727','2'),
+('63','1','728','2'),
+('63','1','729','2'),
+('64','1','49','2'),
+('64','1','58','2'),
+('64','1','75','2'),
+('64','1','105','2'),
 ('4','1','682','3'),
 ('5','1','688','3'),
 ('6','1','689','3'),
@@ -5889,6 +6197,9 @@ INSERT INTO `ps_hook_module` VALUES
 ('58','1','71','3'),
 ('59','1','46','3'),
 ('61','1','82','3'),
+('64','1','28','3'),
+('64','1','694','3'),
+('64','1','695','3'),
 ('1','1','41','4'),
 ('5','1','682','4'),
 ('6','1','688','4'),
@@ -5898,23 +6209,26 @@ INSERT INTO `ps_hook_module` VALUES
 ('38','1','55','4'),
 ('56','1','683','4'),
 ('59','1','71','4'),
+('64','1','685','4'),
 ('7','1','682','5'),
 ('39','1','55','5'),
 ('56','1','16','5'),
 ('58','1','683','5'),
+('62','1','71','5'),
 ('40','1','55','6'),
 ('54','1','682','6'),
 ('58','1','16','6'),
 ('60','1','683','6'),
 ('41','1','55','7'),
 ('55','1','682','7'),
-('59','1','16','7');
-INSERT INTO `ps_hook_module` VALUES
+('59','1','16','7'),
+('64','1','683','7'),
 ('42','1','55','8'),
 ('56','1','682','8'),
 ('43','1','55','9'),
 ('57','1','682','9'),
 ('45','1','55','10'),
+('64','1','682','10'),
 ('46','1','55','11'),
 ('47','1','55','12'),
 ('48','1','55','13'),
@@ -6151,7 +6465,7 @@ CREATE TABLE `ps_layered_category` (
   PRIMARY KEY (`id_layered_category`),
   KEY `id_category_shop` (`id_category`,`id_shop`,`type`,`id_value`,`position`),
   KEY `id_category` (`id_category`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8;
 
 INSERT INTO `ps_layered_category` VALUES
 ('1','1','category','2',NULL,'category','1','0','0'),
@@ -6166,90 +6480,54 @@ INSERT INTO `ps_layered_category` VALUES
 ('10','1','category','2',NULL,'price','10','0','0'),
 ('11','1','category','2','3','id_attribute_group','11','0','0'),
 ('12','1','category','2','4','id_attribute_group','12','0','0'),
-('13','1','category','3',NULL,'category','1','0','0'),
-('14','1','category','3','1','id_attribute_group','2','0','0'),
-('15','1','category','3','2','id_attribute_group','3','0','0'),
-('16','1','category','3','1','id_feature','4','0','0'),
-('17','1','category','3','2','id_feature','5','0','0'),
-('18','1','category','3',NULL,'availability','6','0','0'),
-('19','1','category','3',NULL,'manufacturer','7','0','0'),
-('20','1','category','3',NULL,'condition','8','0','0'),
-('21','1','category','3',NULL,'weight','9','0','0'),
-('22','1','category','3',NULL,'price','10','0','0'),
-('23','1','category','3','3','id_attribute_group','11','0','0'),
-('24','1','category','3','4','id_attribute_group','12','0','0'),
-('25','1','category','4',NULL,'category','1','0','0'),
-('26','1','category','4','1','id_attribute_group','2','0','0'),
-('27','1','category','4','2','id_attribute_group','3','0','0'),
-('28','1','category','4','1','id_feature','4','0','0'),
-('29','1','category','4','2','id_feature','5','0','0'),
-('30','1','category','4',NULL,'availability','6','0','0'),
-('31','1','category','4',NULL,'manufacturer','7','0','0'),
-('32','1','category','4',NULL,'condition','8','0','0'),
-('33','1','category','4',NULL,'weight','9','0','0'),
-('34','1','category','4',NULL,'price','10','0','0'),
-('35','1','category','4','3','id_attribute_group','11','0','0'),
-('36','1','category','4','4','id_attribute_group','12','0','0'),
-('37','1','category','5',NULL,'category','1','0','0'),
-('38','1','category','5','1','id_attribute_group','2','0','0'),
-('39','1','category','5','2','id_attribute_group','3','0','0'),
-('40','1','category','5','1','id_feature','4','0','0'),
-('41','1','category','5','2','id_feature','5','0','0'),
-('42','1','category','5',NULL,'availability','6','0','0'),
-('43','1','category','5',NULL,'manufacturer','7','0','0'),
-('44','1','category','5',NULL,'condition','8','0','0'),
-('45','1','category','5',NULL,'weight','9','0','0'),
-('46','1','category','5',NULL,'price','10','0','0'),
-('47','1','category','5','3','id_attribute_group','11','0','0'),
-('48','1','category','5','4','id_attribute_group','12','0','0'),
-('49','1','category','9',NULL,'category','1','0','0'),
-('50','1','category','9','1','id_attribute_group','2','0','0'),
-('51','1','category','9','2','id_attribute_group','3','0','0'),
-('52','1','category','9','1','id_feature','4','0','0'),
-('53','1','category','9','2','id_feature','5','0','0'),
-('54','1','category','9',NULL,'availability','6','0','0'),
-('55','1','category','9',NULL,'manufacturer','7','0','0'),
-('56','1','category','9',NULL,'condition','8','0','0'),
-('57','1','category','9',NULL,'weight','9','0','0'),
-('58','1','category','9',NULL,'price','10','0','0'),
-('59','1','category','9','3','id_attribute_group','11','0','0'),
-('60','1','category','9','4','id_attribute_group','12','0','0'),
-('61','1','category','6',NULL,'category','1','0','0'),
-('62','1','category','6','1','id_attribute_group','2','0','0'),
-('63','1','category','6','2','id_attribute_group','3','0','0'),
-('64','1','category','6','1','id_feature','4','0','0'),
-('65','1','category','6','2','id_feature','5','0','0'),
-('66','1','category','6',NULL,'availability','6','0','0'),
-('67','1','category','6',NULL,'manufacturer','7','0','0'),
-('68','1','category','6',NULL,'condition','8','0','0'),
-('69','1','category','6',NULL,'weight','9','0','0'),
-('70','1','category','6',NULL,'price','10','0','0'),
-('71','1','category','6','3','id_attribute_group','11','0','0'),
-('72','1','category','6','4','id_attribute_group','12','0','0'),
-('73','1','category','8',NULL,'category','1','0','0'),
-('74','1','category','8','1','id_attribute_group','2','0','0'),
-('75','1','category','8','2','id_attribute_group','3','0','0'),
-('76','1','category','8','1','id_feature','4','0','0'),
-('77','1','category','8','2','id_feature','5','0','0'),
-('78','1','category','8',NULL,'availability','6','0','0'),
-('79','1','category','8',NULL,'manufacturer','7','0','0'),
-('80','1','category','8',NULL,'condition','8','0','0'),
-('81','1','category','8',NULL,'weight','9','0','0'),
-('82','1','category','8',NULL,'price','10','0','0'),
-('83','1','category','8','3','id_attribute_group','11','0','0'),
-('84','1','category','8','4','id_attribute_group','12','0','0'),
-('85','1','category','7',NULL,'category','1','0','0'),
-('86','1','category','7','1','id_attribute_group','2','0','0'),
-('87','1','category','7','2','id_attribute_group','3','0','0'),
-('88','1','category','7','1','id_feature','4','0','0'),
-('89','1','category','7','2','id_feature','5','0','0'),
-('90','1','category','7',NULL,'availability','6','0','0'),
-('91','1','category','7',NULL,'manufacturer','7','0','0'),
-('92','1','category','7',NULL,'condition','8','0','0'),
-('93','1','category','7',NULL,'weight','9','0','0'),
-('94','1','category','7',NULL,'price','10','0','0'),
-('95','1','category','7','3','id_attribute_group','11','0','0'),
-('96','1','category','7','4','id_attribute_group','12','0','0');
+('13','1','category','4',NULL,'category','1','0','0'),
+('14','1','category','4','1','id_attribute_group','2','0','0'),
+('15','1','category','4','2','id_attribute_group','3','0','0'),
+('16','1','category','4','1','id_feature','4','0','0'),
+('17','1','category','4','2','id_feature','5','0','0'),
+('18','1','category','4',NULL,'availability','6','0','0'),
+('19','1','category','4',NULL,'manufacturer','7','0','0'),
+('20','1','category','4',NULL,'condition','8','0','0'),
+('21','1','category','4',NULL,'weight','9','0','0'),
+('22','1','category','4',NULL,'price','10','0','0'),
+('23','1','category','4','3','id_attribute_group','11','0','0'),
+('24','1','category','4','4','id_attribute_group','12','0','0'),
+('25','1','category','5',NULL,'category','1','0','0'),
+('26','1','category','5','1','id_attribute_group','2','0','0'),
+('27','1','category','5','2','id_attribute_group','3','0','0'),
+('28','1','category','5','1','id_feature','4','0','0'),
+('29','1','category','5','2','id_feature','5','0','0'),
+('30','1','category','5',NULL,'availability','6','0','0'),
+('31','1','category','5',NULL,'manufacturer','7','0','0'),
+('32','1','category','5',NULL,'condition','8','0','0'),
+('33','1','category','5',NULL,'weight','9','0','0'),
+('34','1','category','5',NULL,'price','10','0','0'),
+('35','1','category','5','3','id_attribute_group','11','0','0'),
+('36','1','category','5','4','id_attribute_group','12','0','0'),
+('37','1','category','8',NULL,'category','1','0','0'),
+('38','1','category','8','1','id_attribute_group','2','0','0'),
+('39','1','category','8','2','id_attribute_group','3','0','0'),
+('40','1','category','8','1','id_feature','4','0','0'),
+('41','1','category','8','2','id_feature','5','0','0'),
+('42','1','category','8',NULL,'availability','6','0','0'),
+('43','1','category','8',NULL,'manufacturer','7','0','0'),
+('44','1','category','8',NULL,'condition','8','0','0'),
+('45','1','category','8',NULL,'weight','9','0','0'),
+('46','1','category','8',NULL,'price','10','0','0'),
+('47','1','category','8','3','id_attribute_group','11','0','0'),
+('48','1','category','8','4','id_attribute_group','12','0','0'),
+('49','1','category','7',NULL,'category','1','0','0'),
+('50','1','category','7','1','id_attribute_group','2','0','0'),
+('51','1','category','7','2','id_attribute_group','3','0','0'),
+('52','1','category','7','1','id_feature','4','0','0'),
+('53','1','category','7','2','id_feature','5','0','0'),
+('54','1','category','7',NULL,'availability','6','0','0'),
+('55','1','category','7',NULL,'manufacturer','7','0','0'),
+('56','1','category','7',NULL,'condition','8','0','0'),
+('57','1','category','7',NULL,'weight','9','0','0'),
+('58','1','category','7',NULL,'price','10','0','0'),
+('59','1','category','7','3','id_attribute_group','11','0','0'),
+('60','1','category','7','4','id_attribute_group','12','0','0');
 /* Scheme for table ps_layered_filter */
 DROP TABLE IF EXISTS `ps_layered_filter`;
 CREATE TABLE `ps_layered_filter` (
@@ -6262,7 +6540,7 @@ CREATE TABLE `ps_layered_filter` (
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 INSERT INTO `ps_layered_filter` VALUES
-('1','My template 2023-10-22','a:15:{s:10:\"categories\";a:8:{i:0;i:2;i:1;i:3;i:2;i:4;i:3;i:5;i:4;i:9;i:5;i:6;i:6;i:8;i:7;i:7;}s:11:\"controllers\";a:1:{i:0;s:8:\"category\";}s:9:\"shop_list\";a:1:{i:1;i:1;}s:31:\"layered_selection_subcategories\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:23:\"layered_selection_stock\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_manufacturer\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:27:\"layered_selection_condition\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:31:\"layered_selection_weight_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_price_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_3\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_4\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}}','8','2023-10-22 16:41:24');
+('1','My template 2023-10-22','a:15:{s:10:\"categories\";a:5:{i:0;i:2;i:2;i:4;i:3;i:5;i:6;i:8;i:7;i:7;}s:11:\"controllers\";a:1:{i:0;s:8:\"category\";}s:9:\"shop_list\";a:1:{i:1;i:1;}s:31:\"layered_selection_subcategories\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_1\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:24:\"layered_selection_feat_2\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:23:\"layered_selection_stock\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_manufacturer\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:27:\"layered_selection_condition\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:31:\"layered_selection_weight_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:30:\"layered_selection_price_slider\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_3\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}s:22:\"layered_selection_ag_4\";a:2:{s:11:\"filter_type\";i:0;s:17:\"filter_show_limit\";i:0;}}','5','2023-10-22 16:41:24');
 /* Scheme for table ps_layered_filter_block */
 DROP TABLE IF EXISTS `ps_layered_filter_block`;
 CREATE TABLE `ps_layered_filter_block` (
@@ -6507,7 +6785,7 @@ CREATE TABLE `ps_log` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_log`)
-) ENGINE=InnoDB AUTO_INCREMENT=233 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=250 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_log` VALUES
 ('1','1','0','Exporting mail with theme modern for language Polski (Polish)',NULL,'0','1',NULL,'0','0','0','2023-10-22 18:40:43','2023-10-22 18:40:43'),
@@ -6742,7 +7020,24 @@ INSERT INTO `ps_log` VALUES
 ('229','1','0','Product modification','Product','20','1',NULL,'1','0','1','2023-10-22 18:51:58','2023-10-22 18:51:58'),
 ('230','1','0','Product deleted: (20).','Product','20','1',NULL,'1','0','1','2023-10-22 19:02:19','2023-10-22 19:02:19'),
 ('231','1','0','Połączenie z panelem administracyjnym z 172.18.0.1',NULL,'0',NULL,NULL,'1','1','1','2023-10-22 20:11:00','2023-10-22 20:11:00'),
-('232','1','0','Product modification','Product','19','1',NULL,'1','0','1','2023-10-22 20:11:14','2023-10-22 20:11:14');
+('232','1','0','Product modification','Product','19','1',NULL,'1','0','1','2023-10-22 20:11:14','2023-10-22 20:11:14'),
+('233','1','0','Połączenie z panelem administracyjnym z 192.168.65.1',NULL,'0',NULL,NULL,'1','1','1','2023-11-02 17:48:45','2023-11-02 17:48:45'),
+('234','1','0','usunięcie Store','Store','4','1',NULL,'1','0','1','2023-11-02 18:34:45','2023-11-02 18:34:45'),
+('235','1','0','usunięcie Store','Store','3','1',NULL,'1','0','1','2023-11-02 18:34:50','2023-11-02 18:34:50'),
+('236','1','0','usunięcie Store','Store','1','1',NULL,'1','0','1','2023-11-02 18:34:55','2023-11-02 18:34:55'),
+('237','1','0','usunięcie Store','Store','2','1',NULL,'1','0','1','2023-11-02 18:40:41','2023-11-02 18:40:41'),
+('238','1','0','usunięcie Store','Store','5','1',NULL,'1','0','1','2023-11-02 18:40:46','2023-11-02 18:40:46'),
+('239','1','0','Store modyfikacja','Store','6','1',NULL,'1','0','1','2023-11-02 18:46:31','2023-11-02 18:46:31'),
+('240','1','0','Store modyfikacja','Store','6','1',NULL,'1','0','1','2023-11-02 18:47:02','2023-11-02 18:47:02'),
+('241','1','0','Połączenie z panelem administracyjnym z 192.168.65.1',NULL,'0',NULL,NULL,'1','1','1','2023-11-02 23:04:45','2023-11-02 23:04:45'),
+('242','1','0','usunięcie Carrier','Carrier','2','1',NULL,'1','0','1','2023-11-02 23:40:03','2023-11-02 23:40:03'),
+('243','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','6','1',NULL,'1','0','0','2023-11-03 00:17:38','2023-11-03 00:17:38'),
+('244','1','0','Protect vendor folder in module ps_eventbus',NULL,'0','1',NULL,'1','0','1','2023-11-03 00:21:48','2023-11-03 00:21:48'),
+('245','1','0','Protect vendor folder in module ps_accounts',NULL,'0','1',NULL,'1','0','1','2023-11-03 00:21:48','2023-11-03 00:21:48'),
+('246','1','0','Protect vendor folder in module ps_checkout',NULL,'0','1',NULL,'1','0','1','2023-11-03 00:23:29','2023-11-03 00:23:29'),
+('247','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','7','1',NULL,'1','0','0','2023-11-03 00:27:02','2023-11-03 00:27:02'),
+('248','1','0','Frontcontroller::init - Cart cannot be loaded or an order has already been placed using this cart','Cart','8','1',NULL,'1','0','0','2023-11-03 00:46:02','2023-11-03 00:46:02'),
+('249','1','0','Protect vendor folder in module ps_emailalerts',NULL,'0','1',NULL,'1','0','1','2023-11-03 00:54:57','2023-11-03 00:54:57');
 /* Scheme for table ps_mail */
 DROP TABLE IF EXISTS `ps_mail`;
 CREATE TABLE `ps_mail` (
@@ -6754,7 +7049,27 @@ CREATE TABLE `ps_mail` (
   `date_add` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id_mail`),
   KEY `recipient` (`recipient`(10))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+
+INSERT INTO `ps_mail` VALUES
+('1','mm@gmail.com','account','[PrestaShop] Witaj !','1','2023-11-02 17:52:13'),
+('2','mm@gmail.com','bankwire','[Miotła Hermiony] Oczekiwanie na płatność przelewem','1','2023-11-03 00:17:37'),
+('3','mm@gmail.com','order_conf','[Miotła Hermiony] Potwierdzenie zamówienia','1','2023-11-03 00:17:37'),
+('4','mm@gmail.com','bankwire','[Miotła Hermiony] Oczekiwanie na płatność przelewem','1','2023-11-03 00:27:02'),
+('5','mm@gmail.com','order_conf','[Miotła Hermiony] Potwierdzenie zamówienia','1','2023-11-03 00:27:02'),
+('6','mm@gmail.com','bankwire','[Miotła Hermiony] Oczekiwanie na płatność przelewem','1','2023-11-03 00:46:02'),
+('7','mm@gmail.com','order_conf','[Miotła Hermiony] Potwierdzenie zamówienia','1','2023-11-03 00:46:02');
+/* Scheme for table ps_mailalert_customer_oos */
+DROP TABLE IF EXISTS `ps_mailalert_customer_oos`;
+CREATE TABLE `ps_mailalert_customer_oos` (
+  `id_customer` int(10) unsigned NOT NULL,
+  `customer_email` varchar(128) NOT NULL,
+  `id_product` int(10) unsigned NOT NULL,
+  `id_product_attribute` int(10) unsigned NOT NULL,
+  `id_shop` int(10) unsigned NOT NULL,
+  `id_lang` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id_customer`,`customer_email`,`id_product`,`id_product_attribute`,`id_shop`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /* Scheme for table ps_manufacturer */
 DROP TABLE IF EXISTS `ps_manufacturer`;
@@ -6843,7 +7158,7 @@ CREATE TABLE `ps_meta` (
   `configurable` tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (`id_meta`),
   UNIQUE KEY `page` (`page`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_meta` VALUES
 ('1','pagenotfound','1'),
@@ -6885,7 +7200,8 @@ INSERT INTO `ps_meta` VALUES
 ('37','module-ps_emailsubscription-subscription','1'),
 ('38','module-ps_shoppingcart-ajax','1'),
 ('39','module-ps_wirepayment-payment','1'),
-('40','module-ps_wirepayment-validation','1');
+('40','module-ps_wirepayment-validation','1'),
+('41','module-ps_emailalerts-account','1');
 /* Scheme for table ps_meta_lang */
 DROP TABLE IF EXISTS `ps_meta_lang`;
 CREATE TABLE `ps_meta_lang` (
@@ -6933,7 +7249,8 @@ INSERT INTO `ps_meta_lang` VALUES
 ('37','1','1',NULL,NULL,NULL,''),
 ('38','1','1',NULL,NULL,NULL,''),
 ('39','1','1',NULL,NULL,NULL,''),
-('40','1','1',NULL,NULL,NULL,'');
+('40','1','1',NULL,NULL,NULL,''),
+('41','1','1',NULL,NULL,NULL,'');
 /* Scheme for table ps_module */
 DROP TABLE IF EXISTS `ps_module`;
 CREATE TABLE `ps_module` (
@@ -6944,7 +7261,7 @@ CREATE TABLE `ps_module` (
   PRIMARY KEY (`id_module`),
   UNIQUE KEY `name_UNIQUE` (`name`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module` VALUES
 ('1','blockwishlist','1','2.1.2'),
@@ -7001,12 +7318,15 @@ INSERT INTO `ps_module` VALUES
 ('53','welcome','1','6.0.9'),
 ('54','psgdpr','1','1.4.3'),
 ('55','ps_mbo','1','2.3.3'),
-('56','ps_checkout','1','7.3.4.0'),
+('56','ps_checkout','1','7.3.5.0'),
 ('57','ps_metrics','1','4.0.2'),
 ('58','ps_facebook','1','1.31.1'),
 ('59','psxmarketingwithgoogle','1','1.61.1'),
 ('60','blockreassurance','1','5.1.2'),
-('61','ps_facetedsearch','1','3.12.1');
+('61','ps_facetedsearch','1','3.12.1'),
+('62','ps_accounts','1','5.6.1'),
+('63','ps_eventbus','1','2.3.2'),
+('64','ps_emailalerts','1','2.4.2');
 /* Scheme for table ps_module_access */
 DROP TABLE IF EXISTS `ps_module_access`;
 CREATE TABLE `ps_module_access` (
@@ -7256,7 +7576,19 @@ INSERT INTO `ps_module_access` VALUES
 ('1','825'),
 ('1','826'),
 ('1','827'),
-('1','828');
+('1','828'),
+('1','837'),
+('1','838'),
+('1','839'),
+('1','840'),
+('1','841'),
+('1','842'),
+('1','843'),
+('1','844'),
+('1','845'),
+('1','846'),
+('1','847'),
+('1','848');
 /* Scheme for table ps_module_carrier */
 DROP TABLE IF EXISTS `ps_module_carrier`;
 CREATE TABLE `ps_module_carrier` (
@@ -7267,16 +7599,10 @@ CREATE TABLE `ps_module_carrier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_carrier` VALUES
-('14','1','1'),
-('14','1','2'),
-('14','1','3'),
-('14','1','4'),
 ('35','1','1'),
-('35','1','2'),
 ('35','1','3'),
 ('35','1','4'),
 ('56','1','1'),
-('56','1','2'),
 ('56','1','3'),
 ('56','1','4');
 /* Scheme for table ps_module_country */
@@ -7503,7 +7829,6 @@ CREATE TABLE `ps_module_currency` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_module_currency` VALUES
-('14','1','1'),
 ('35','1','1'),
 ('56','1','1');
 /* Scheme for table ps_module_group */
@@ -7555,9 +7880,6 @@ INSERT INTO `ps_module_group` VALUES
 ('13','1','1'),
 ('13','1','2'),
 ('13','1','3'),
-('14','1','1'),
-('14','1','2'),
-('14','1','3'),
 ('15','1','1'),
 ('15','1','2'),
 ('15','1','3'),
@@ -7695,7 +8017,16 @@ INSERT INTO `ps_module_group` VALUES
 ('60','1','3'),
 ('61','1','1'),
 ('61','1','2'),
-('61','1','3');
+('61','1','3'),
+('62','1','1'),
+('62','1','2'),
+('62','1','3'),
+('63','1','1'),
+('63','1','2'),
+('63','1','3'),
+('64','1','1'),
+('64','1','2'),
+('64','1','3');
 /* Scheme for table ps_module_history */
 DROP TABLE IF EXISTS `ps_module_history`;
 CREATE TABLE `ps_module_history` (
@@ -7705,8 +8036,14 @@ CREATE TABLE `ps_module_history` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `ps_module_history` VALUES
+('1','1','14','2023-11-02 23:58:03','2023-11-03 00:19:28'),
+('2','1','35','2023-11-02 23:58:18','2023-11-03 00:35:41'),
+('3','1','59','2023-11-03 00:21:24','2023-11-03 00:21:24'),
+('4','1','56','2023-11-03 00:24:38','2023-11-03 00:46:35'),
+('5','1','64','2023-11-03 00:55:56','2023-11-03 01:01:40');
 /* Scheme for table ps_module_preference */
 DROP TABLE IF EXISTS `ps_module_preference`;
 CREATE TABLE `ps_module_preference` (
@@ -7743,7 +8080,6 @@ INSERT INTO `ps_module_shop` VALUES
 ('11','1','7'),
 ('12','1','3'),
 ('13','1','7'),
-('14','1','7'),
 ('15','1','7'),
 ('16','1','7'),
 ('17','1','7'),
@@ -7751,7 +8087,6 @@ INSERT INTO `ps_module_shop` VALUES
 ('19','1','7'),
 ('20','1','7'),
 ('21','1','7'),
-('22','1','7'),
 ('24','1','7'),
 ('25','1','7'),
 ('26','1','3'),
@@ -7761,7 +8096,6 @@ INSERT INTO `ps_module_shop` VALUES
 ('30','1','7'),
 ('31','1','7'),
 ('32','1','7'),
-('33','1','7'),
 ('34','1','7'),
 ('35','1','7'),
 ('36','1','7'),
@@ -7789,7 +8123,10 @@ INSERT INTO `ps_module_shop` VALUES
 ('58','1','7'),
 ('59','1','7'),
 ('60','1','7'),
-('61','1','7');
+('61','1','7'),
+('62','1','7'),
+('63','1','7'),
+('64','1','7');
 /* Scheme for table ps_operating_system */
 DROP TABLE IF EXISTS `ps_operating_system`;
 CREATE TABLE `ps_operating_system` (
@@ -7824,14 +8161,17 @@ CREATE TABLE `ps_order_carrier` (
   KEY `id_order` (`id_order`),
   KEY `id_carrier` (`id_carrier`),
   KEY `id_order_invoice` (`id_order_invoice`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_carrier` VALUES
 ('1','1','2','0','0.000000','7.000000','8.400000',NULL,'2023-10-22 18:41:23'),
 ('2','2','2','0','0.000000','7.000000','8.400000',NULL,'2023-10-22 18:41:23'),
 ('3','3','2','0','0.000000','7.000000','8.400000',NULL,'2023-10-22 18:41:23'),
 ('4','4','2','0','0.000000','7.000000','8.400000',NULL,'2023-10-22 18:41:23'),
-('5','5','2','0','0.000000','7.000000','8.400000',NULL,'2023-10-22 18:41:23');
+('5','5','2','0','0.000000','7.000000','8.400000',NULL,'2023-10-22 18:41:23'),
+('6','6','8','0','0.300000','7.000000','7.000000',NULL,'2023-11-03 00:17:36'),
+('7','7','8','0','0.300000','7.000000','7.000000',NULL,'2023-11-03 00:27:01'),
+('8','8','8','0','0.300000','7.000000','7.000000',NULL,'2023-11-03 00:46:02');
 /* Scheme for table ps_order_cart_rule */
 DROP TABLE IF EXISTS `ps_order_cart_rule`;
 CREATE TABLE `ps_order_cart_rule` (
@@ -7907,7 +8247,7 @@ CREATE TABLE `ps_order_detail` (
   KEY `product_attribute_id` (`product_attribute_id`),
   KEY `id_tax_rules_group` (`id_tax_rules_group`),
   KEY `id_order_id_order_detail` (`id_order`,`id_order_detail`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_detail` VALUES
 ('1','1','0','0','1','1','1','0','Hummingbird printed t-shirt - Color : White, Size : S','1','1','0','0','0','23.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_1',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','23.900000','23.900000','23.900000','23.900000','0.000000','0.000000','0.000000','23.900000','0.000000','0.000000','0.000000'),
@@ -7916,7 +8256,10 @@ INSERT INTO `ps_order_detail` VALUES
 ('4','2','0','0','1','8','0','0','Mug Today is a good day','1','1','0','0','0','11.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_13',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','11.900000','11.900000','11.900000','11.900000','0.000000','0.000000','0.000000','11.900000','0.000000','0.000000','0.000000'),
 ('5','3','0','0','1','16','28','0','Mountain fox notebook Style : Ruled','1','1','0','0','0','12.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_8',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','12.900000','12.900000','12.900000','12.900000','0.000000','0.000000','0.000000','12.900000','0.000000','0.000000','0.000000'),
 ('6','4','0','0','1','16','29','0','Mountain fox notebook Style : Plain','1','1','0','0','0','12.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_8',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','12.900000','12.900000','12.900000','12.900000','0.000000','0.000000','0.000000','12.900000','0.000000','0.000000','0.000000'),
-('7','5','0','0','1','10','25','0','Brown bear cushion Color : Black','1','1','0','0','0','18.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_16',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','18.900000','18.900000','18.900000','18.900000','0.000000','0.000000','0.000000','18.900000','0.000000','0.000000','0.000000');
+('7','5','0','0','1','10','25','0','Brown bear cushion Color : Black','1','1','0','0','0','18.900000','0.00','0.000000','0.000000','0.000000','0.00','0.000000',NULL,NULL,NULL,NULL,'demo_16',NULL,'0.000000','0','0','','0.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','18.900000','18.900000','18.900000','18.900000','0.000000','0.000000','0.000000','18.900000','0.000000','0.000000','0.000000'),
+('8','6','0','0','1','2','9','0','Hummingbird printed sweater (Rozmiar: S)','1','1','0','0','0','28.720000','20.00','0.000000','0.000000','0.000000','0.00','36.560000',NULL,NULL,NULL,NULL,'demo_3','demo_3_62','0.300000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','35.330000','28.720000','35.325600','28.720000','0.000000','0.000000','5.490000','35.900000','0.000000','0.000000','0.000000'),
+('9','7','0','0','1','1','2','0','Hummingbird printed t-shirt (Rozmiar: S - Kolor: czarny)','1','1','0','0','0','19.120000','20.00','0.000000','0.000000','0.000000','0.00','24.750000',NULL,NULL,NULL,NULL,'demo_1','demo_1_47','0.300000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','23.520000','19.120000','23.517600','19.120000','0.000000','0.000000','5.490000','23.900000','0.000000','0.000000','0.000000'),
+('10','8','0','0','1','2','9','0','Hummingbird printed sweater (Rozmiar: S)','1','1','0','0','0','28.720000','20.00','0.000000','0.000000','0.000000','0.00','36.560000',NULL,NULL,NULL,NULL,'demo_3','demo_3_62','0.300000','1','0','PTU PL 23%','23.000','0.000000','0.000','0',NULL,'0','0000-00-00 00:00:00','35.330000','28.720000','35.325600','28.720000','0.000000','0.000000','5.490000','35.900000','0.000000','0.000000','0.000000');
 /* Scheme for table ps_order_detail_tax */
 DROP TABLE IF EXISTS `ps_order_detail_tax`;
 CREATE TABLE `ps_order_detail_tax` (
@@ -7928,6 +8271,10 @@ CREATE TABLE `ps_order_detail_tax` (
   KEY `id_tax` (`id_tax`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `ps_order_detail_tax` VALUES
+('8','1','6.605600','6.610000'),
+('9','1','4.397600','4.400000'),
+('10','1','6.605600','6.610000');
 /* Scheme for table ps_order_history */
 DROP TABLE IF EXISTS `ps_order_history`;
 CREATE TABLE `ps_order_history` (
@@ -7940,7 +8287,7 @@ CREATE TABLE `ps_order_history` (
   KEY `order_history_order` (`id_order`),
   KEY `id_employee` (`id_employee`),
   KEY `id_order_state` (`id_order_state`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_order_history` VALUES
 ('1','0','1','1','2023-10-22 18:41:24'),
@@ -7949,7 +8296,10 @@ INSERT INTO `ps_order_history` VALUES
 ('4','0','4','1','2023-10-22 18:41:24'),
 ('5','0','5','10','2023-10-22 18:41:24'),
 ('6','1','1','6','2023-10-22 18:41:24'),
-('7','1','3','8','2023-10-22 18:41:24');
+('7','1','3','8','2023-10-22 18:41:24'),
+('8','0','6','10','2023-11-03 00:17:36'),
+('9','0','7','10','2023-11-03 00:27:02'),
+('10','0','8','10','2023-11-03 00:46:02');
 /* Scheme for table ps_order_invoice */
 DROP TABLE IF EXISTS `ps_order_invoice`;
 CREATE TABLE `ps_order_invoice` (
@@ -8261,14 +8611,17 @@ CREATE TABLE `ps_orders` (
   KEY `current_state` (`current_state`),
   KEY `id_shop` (`id_shop`),
   KEY `date_add` (`date_add`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_orders` VALUES
 ('1','XKBKNABJK','1','1','2','1','2','1','1','5','5','6','b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check','1.000000','ps_checkpayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','61.800000','68.200000','66.800000','0.000000','59.800000','59.800000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-10-22 18:41:23','2023-10-22 18:41:24','Test'),
 ('2','OHSATSERP','1','1','2','1','2','2','1','5','5','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check','1.000000','ps_checkpayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','169.900000','169.900000','169.900000','0.000000','169.900000','169.900000','0.000000','0.000000','0.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-10-22 18:41:23','2023-10-22 18:41:24',NULL),
 ('3','UOYEVOLI','1','1','2','1','2','3','1','5','5','8','b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check','1.000000','ps_checkpayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','14.900000','21.300000','19.900000','0.000000','12.900000','12.900000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-10-22 18:41:23','2023-10-22 18:41:24',NULL),
 ('4','FFATNOMMJ','1','1','2','1','2','4','1','5','5','1','b44a6d9efd7a0076a0fbce6b15eaf3b1','Payment by check','1.000000','ps_checkpayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','14.900000','21.300000','19.900000','0.000000','12.900000','12.900000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-10-22 18:41:23','2023-10-22 18:41:24',NULL),
-('5','KHWLILZLL','1','1','2','1','2','5','1','5','5','10','b44a6d9efd7a0076a0fbce6b15eaf3b1','Bank wire','1.000000','ps_wirepayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','20.900000','27.300000','25.900000','0.000000','18.900000','18.900000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-10-22 18:41:23','2023-10-22 18:41:24',NULL);
+('5','KHWLILZLL','1','1','2','1','2','5','1','5','5','10','b44a6d9efd7a0076a0fbce6b15eaf3b1','Bank wire','1.000000','ps_wirepayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','20.900000','27.300000','25.900000','0.000000','18.900000','18.900000','7.000000','8.400000','7.000000','0.000','0.000000','0.000000','0.000000','0','0','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-10-22 18:41:23','2023-10-22 18:41:24',NULL),
+('6','DPIWDYNXD','1','1','8','1','3','6','1','7','7','10','04274362f4da7dd5371d574d53f1985d','Płatności elektroniczne','1.000000','ps_wirepayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','42.330000','42.330000','35.720000','0.000000','28.720000','35.330000','7.000000','7.000000','7.000000','0.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-11-03 00:17:36','2023-11-03 00:17:36',NULL),
+('7','FLHOOYUGG','1','1','8','1','3','7','1','7','7','10','04274362f4da7dd5371d574d53f1985d','Płatności elektroniczne','1.000000','ps_wirepayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','30.520000','30.520000','26.120000','0.000000','19.120000','23.520000','7.000000','7.000000','7.000000','0.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-11-03 00:27:01','2023-11-03 00:27:02',NULL),
+('8','JKOIUBFBR','1','1','8','1','3','8','1','7','7','10','04274362f4da7dd5371d574d53f1985d','Płatności elektroniczne','1.000000','ps_wirepayment','0','0',NULL,'0',NULL,'0.000000','0.000000','0.000000','42.330000','42.330000','35.720000','0.000000','28.720000','35.330000','7.000000','7.000000','7.000000','0.000','0.000000','0.000000','0.000000','2','2','0','0','0000-00-00 00:00:00','0000-00-00 00:00:00','0','2023-11-03 00:46:02','2023-11-03 00:46:02',NULL);
 /* Scheme for table ps_pack */
 DROP TABLE IF EXISTS `ps_pack`;
 CREATE TABLE `ps_pack` (
@@ -8292,10 +8645,12 @@ CREATE TABLE `ps_page` (
   PRIMARY KEY (`id_page`),
   KEY `id_page_type` (`id_page_type`),
   KEY `id_object` (`id_object`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_page` VALUES
-('1','1',NULL);
+('1','1',NULL),
+('2','2',NULL),
+('3','3',NULL);
 /* Scheme for table ps_page_type */
 DROP TABLE IF EXISTS `ps_page_type`;
 CREATE TABLE `ps_page_type` (
@@ -8303,10 +8658,12 @@ CREATE TABLE `ps_page_type` (
   `name` varchar(255) NOT NULL,
   PRIMARY KEY (`id_page_type`),
   KEY `name` (`name`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_page_type` VALUES
-('1','index');
+('1','index'),
+('2','pagenotfound'),
+('3','stores');
 /* Scheme for table ps_page_viewed */
 DROP TABLE IF EXISTS `ps_page_viewed`;
 CREATE TABLE `ps_page_viewed` (
@@ -9049,6 +9406,7 @@ CREATE TABLE `ps_pscheckout_cart` (
   `isHostedFields` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
+  `environment` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`id_pscheckout_cart`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -9121,8 +9479,10 @@ CREATE TABLE `ps_psgdpr_log` (
   PRIMARY KEY (`id_gdpr_log`),
   KEY `id_customer` (`id_customer`),
   KEY `idx_id_customer` (`id_customer`,`id_guest`,`client_name`,`id_module`,`date_add`,`date_upd`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `ps_psgdpr_log` VALUES
+('1','3','0','mm mm','0','1','2023-11-02 17:52:13','2023-11-02 17:52:13');
 /* Scheme for table ps_psreassurance */
 DROP TABLE IF EXISTS `ps_psreassurance`;
 CREATE TABLE `ps_psreassurance` (
@@ -9198,13 +9558,21 @@ CREATE TABLE `ps_range_price` (
   `delimiter2` decimal(20,6) NOT NULL,
   PRIMARY KEY (`id_range_price`),
   UNIQUE KEY `id_carrier` (`id_carrier`,`delimiter1`,`delimiter2`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_range_price` VALUES
 ('1','2','0.000000','10000.000000'),
 ('2','3','0.000000','50.000000'),
 ('3','3','50.000000','100.000000'),
-('4','3','100.000000','200.000000');
+('4','3','100.000000','200.000000'),
+('5','5','0.000000','2000.000000'),
+('6','5','2000.000000','100000.000000'),
+('7','6','0.000000','2000.000000'),
+('8','6','2000.000000','10000.000000'),
+('9','7','0.000000','2000.000000'),
+('10','7','2000.000000','100000.000000'),
+('11','8','0.000000','2000.000000'),
+('12','8','2000.000000','10000.000000');
 /* Scheme for table ps_range_weight */
 DROP TABLE IF EXISTS `ps_range_weight`;
 CREATE TABLE `ps_range_weight` (
@@ -10055,7 +10423,7 @@ CREATE TABLE `ps_search_word` (
   `word` varchar(30) NOT NULL,
   PRIMARY KEY (`id_word`),
   UNIQUE KEY `id_lang` (`id_lang`,`id_shop`,`word`)
-) ENGINE=InnoDB AUTO_INCREMENT=681 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=661 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_search_word` VALUES
 ('655','1','1','---'),
@@ -10880,8 +11248,8 @@ CREATE TABLE `ps_stock_available` (
 ) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_stock_available` VALUES
-('1','1','0','1','0','2400','0','0','0','2',''),
-('2','2','0','1','0','2100','0','0','0','2',''),
+('1','1','0','1','0','2399','2399','0','0','2',''),
+('2','2','0','1','0','2098','2098','0','0','2',''),
 ('3','3','0','1','0','1500','0','0','0','2',''),
 ('4','4','0','1','0','1500','0','0','0','2',''),
 ('5','5','0','1','0','900','0','0','0','2',''),
@@ -10899,18 +11267,18 @@ INSERT INTO `ps_stock_available` VALUES
 ('17','17','0','1','0','1200','0','0','0','2',''),
 ('18','18','0','1','0','1200','0','0','0','2',''),
 ('19','19','0','1','0','300','0','0','0','2',''),
-('20','1','1','1','0','300','0','0','0','2',''),
-('21','1','2','1','0','300','0','0','0','2',''),
-('22','1','3','1','0','300','0','0','0','2',''),
-('23','1','4','1','0','300','0','0','0','2',''),
-('24','1','5','1','0','300','0','0','0','2',''),
-('25','1','6','1','0','300','0','0','0','2',''),
-('26','1','7','1','0','300','0','0','0','2',''),
-('27','1','8','1','0','300','0','0','0','2',''),
-('28','2','9','1','0','1200','0','0','0','2',''),
-('29','2','10','1','0','300','0','0','0','2',''),
-('30','2','11','1','0','300','0','0','0','2',''),
-('31','2','12','1','0','300','0','0','0','2',''),
+('20','1','1','1','0','300','300','0','0','2',''),
+('21','1','2','1','0','299','300','1','0','2',''),
+('22','1','3','1','0','300','300','0','0','2',''),
+('23','1','4','1','0','300','300','0','0','2',''),
+('24','1','5','1','0','300','300','0','0','2',''),
+('25','1','6','1','0','300','300','0','0','2',''),
+('26','1','7','1','0','300','300','0','0','2',''),
+('27','1','8','1','0','300','300','0','0','2',''),
+('28','2','9','1','0','1198','1200','2','0','2',''),
+('29','2','10','1','0','300','300','0','0','2',''),
+('30','2','11','1','0','300','300','0','0','2',''),
+('31','2','12','1','0','300','300','0','0','2',''),
 ('32','3','13','1','0','900','0','0','0','2',''),
 ('33','3','14','1','0','300','0','0','0','2',''),
 ('34','3','15','1','0','300','0','0','0','2',''),
@@ -11026,14 +11394,10 @@ CREATE TABLE `ps_store` (
   `date_add` datetime NOT NULL,
   `date_upd` datetime NOT NULL,
   PRIMARY KEY (`id_store`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_store` VALUES
-('1','21','12','Miami','33135','25.76500500','-80.24379700',NULL,NULL,NULL,'1','2023-10-22 18:41:24','2023-10-22 18:41:24'),
-('2','21','12','Miami','33304','26.13793600','-80.13943500',NULL,NULL,NULL,'1','2023-10-22 18:41:24','2023-10-22 18:41:24'),
-('3','21','12','Miami','33026','26.00998700','-80.29447200',NULL,NULL,NULL,'1','2023-10-22 18:41:24','2023-10-22 18:41:24'),
-('4','21','12','Miami','33133','25.73629600','-80.24479700',NULL,NULL,NULL,'1','2023-10-22 18:41:24','2023-10-22 18:41:24'),
-('5','21','12','Miami','33181','25.88674000','-80.16329200',NULL,NULL,NULL,'1','2023-10-22 18:41:24','2023-10-22 18:41:24');
+('6','14','0','Gdańsk','80-233','80.00000000','80.00000000',NULL,NULL,NULL,'1','2023-11-02 18:45:56','2023-11-02 18:47:02');
 /* Scheme for table ps_store_lang */
 DROP TABLE IF EXISTS `ps_store_lang`;
 CREATE TABLE `ps_store_lang` (
@@ -11048,11 +11412,7 @@ CREATE TABLE `ps_store_lang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_store_lang` VALUES
-('1','1','Dade County','3030 SW 8th St Miami',NULL,' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',NULL),
-('2','1','E Fort Lauderdale','1000 Northeast 4th Ave Fort Lauderdale',NULL,' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',NULL),
-('3','1','Pembroke Pines','11001 Pines Blvd Pembroke Pines',NULL,' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',NULL),
-('4','1','Coconut Grove','2999 SW 32nd Avenue',NULL,' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',NULL),
-('5','1','N Miami/Biscayne','12055 Biscayne Blvd',NULL,' [[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"09:00AM - 07:00PM\"],[\"10:00AM - 04:00PM\"],[\"10:00AM - 04:00PM\"]]',NULL);
+('6','1','Sklep \"Balenciaga\"','Gabriela Narutowicza 11/12',NULL,'[[\"10:00 - 21:30\"],[\"10:00 - 21:30\"],[\"10:00 - 21:30\"],[\"10:00 - 21:30\"],[\"10:00 - 21:30\"],[\"10:00 - 21:30\"],[\"10:00 - 21:30\"]]',NULL);
 /* Scheme for table ps_store_shop */
 DROP TABLE IF EXISTS `ps_store_shop`;
 CREATE TABLE `ps_store_shop` (
@@ -11063,11 +11423,7 @@ CREATE TABLE `ps_store_shop` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `ps_store_shop` VALUES
-('1','1'),
-('2','1'),
-('3','1'),
-('4','1'),
-('5','1');
+('6','1');
 /* Scheme for table ps_supplier */
 DROP TABLE IF EXISTS `ps_supplier`;
 CREATE TABLE `ps_supplier` (
@@ -11255,7 +11611,7 @@ CREATE TABLE `ps_tab` (
   `wording` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `wording_domain` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id_tab`)
-) ENGINE=InnoDB AUTO_INCREMENT=150 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=152 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `ps_tab` VALUES
 ('1','0','0',NULL,'AdminDashboard',NULL,'1','1','0','trending_up','Dashboard','Admin.Navigation.Menu'),
@@ -11406,7 +11762,9 @@ INSERT INTO `ps_tab` VALUES
 ('146','-1','8','ps_facebook','AdminAjaxPsfacebook',NULL,'1','1','0',NULL,NULL,NULL),
 ('147','144','2','psxmarketingwithgoogle','AdminPsxMktgWithGoogleModule',NULL,'1','1','0',NULL,NULL,NULL),
 ('148','-1','9','psxmarketingwithgoogle','AdminAjaxPsxMktgWithGoogle',NULL,'1','1','0',NULL,NULL,NULL),
-('149','0','7','blockreassurance','AdminBlockListing',NULL,'0','1','0',NULL,NULL,NULL);
+('149','0','7','blockreassurance','AdminBlockListing',NULL,'0','1','0',NULL,NULL,NULL),
+('150','0','8','ps_accounts','AdminAjaxPsAccounts',NULL,'0','1','0',NULL,NULL,NULL),
+('151','0','9','ps_accounts','AdminDebugPsAccounts',NULL,'0','1','0',NULL,NULL,NULL);
 /* Scheme for table ps_tab_lang */
 DROP TABLE IF EXISTS `ps_tab_lang`;
 CREATE TABLE `ps_tab_lang` (
@@ -11563,7 +11921,9 @@ INSERT INTO `ps_tab_lang` VALUES
 ('146','1','ps_facebook'),
 ('147','1','Google'),
 ('148','1','psxmarketingwithgoogle'),
-('149','1','AdminBlockListing');
+('149','1','AdminBlockListing'),
+('150','1','Konto PrestaShop (ajax)'),
+('151','1','Konto PrestaShop (debug)');
 /* Scheme for table ps_tab_module_preference */
 DROP TABLE IF EXISTS `ps_tab_module_preference`;
 CREATE TABLE `ps_tab_module_preference` (
@@ -12573,8 +12933,10 @@ CREATE TABLE `ps_wishlist` (
   `date_upd` datetime NOT NULL,
   `default` int(10) unsigned DEFAULT '0',
   PRIMARY KEY (`id_wishlist`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
+INSERT INTO `ps_wishlist` VALUES
+('1','3','1','1','02AD3B8B64230C13','My wishlist',NULL,'2023-11-02 17:53:47','2023-11-02 17:53:47','1');
 /* Scheme for table ps_wishlist_product */
 DROP TABLE IF EXISTS `ps_wishlist_product`;
 CREATE TABLE `ps_wishlist_product` (
