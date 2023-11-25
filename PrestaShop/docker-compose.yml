@@ -9,6 +9,7 @@ services:
   mysql:
     container_name: mysql-database
     image: mysql:5
+    platform: linux/amd64
     ports:
       - "3306"
     volumes:
