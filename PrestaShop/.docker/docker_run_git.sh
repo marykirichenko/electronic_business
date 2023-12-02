@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if [ ${SSL_RESET} = 1 ]; then
+if [ ${SSL_ENABLE} = 1 ]; then
     /tmp/ssl.sh
 fi
 
