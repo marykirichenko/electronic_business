@@ -7,16 +7,19 @@ volumes:
 
 services:
   mysql:
+    container_name: mysql-database
     image: mysql:5
+    platform: linux/amd64
     ports:
       - "3306"
     volumes:
-      - db-data:/var/lib/mysql
+      - ../mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
       MYSQL_ROOT_PASSWORD: prestashop
       MYSQL_DATABASE: prestashop
     restart: always
   prestashop-git:
+    container_name: prestashop
     build:
       dockerfile: .docker/Dockerfile
       context: .
@@ -26,6 +29,7 @@ services:
         - GROUP_ID=${GROUP_ID:-1000}
     environment:
       DISABLE_MAKE: ${DISABLE_MAKE:-0}
+      SSL_ENABLE: ${SSL_ENABLE:-1}
       PS_INSTALL_AUTO: ${PS_INSTALL_AUTO:-1}
       DB_PASSWD: ${DB_PASSWD:-prestashop}
       DB_NAME: ${DB_NAME:-prestashop}
@@ -34,14 +38,14 @@ services:
       PS_DOMAIN: ${PS_DOMAIN:-localhost:8001}
       PS_FOLDER_INSTALL: ${PS_FOLDER_INSTALL:-install-dev}
       PS_FOLDER_ADMIN: ${PS_FOLDER_ADMIN:-admin-dev}
-      PS_COUNTRY: ${PS_COUNTRY:-fr}
-      PS_LANGUAGE: ${PS_LANGUAGE:-fr}
+      PS_COUNTRY: ${PS_COUNTRY:-pl}
+      PS_LANGUAGE: ${PS_LANGUAGE:-pl}
       PS_DEV_MODE: ${PS_DEV_MODE:-0}
       ADMIN_MAIL: ${ADMIN_MAIL:-demo@prestashop.com}
       ADMIN_PASSWD: ${ADMIN_PASSWD:-prestashop_demo}
     command: ["/tmp/wait-for-it.sh", "--timeout=60", "--strict", "mysql:3306", "--", "/tmp/docker_run_git.sh"]
     ports:
-      - "8001:80"
+      - "8001:443"
     depends_on:
         - mysql
     volumes:
