@@ -20,6 +20,8 @@ Katalog Prestashop zawiera kod sklepu, skrypty do konfiguracji Apache i plik doc
 Katalog mysql zawiera pliki bazy danych zawierające konfigurację sklepu i produkty.
 Katalog Scrapper zawiera skrpty pobierające skrypty ze sklepu bazowego i przetwarzające je do plików gotowych do wgrywania do sklepu.
 
+Wykorzystany został Prestashop w wersji 1.7.8.10, Python 3, Selenium 4.15. Instalowana jest najnowsza wersja MySQL.
+
 Uruchamianie
 ---
 1. Wejść do katalogu Prestashop
