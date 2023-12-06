@@ -9,9 +9,9 @@ Skład zespołu
 ---
 Zespół tworzony jest przez studentów:
 - Mariia Kyrychenko
-- Konstanty Kalenik
+- Kanstantsin Kalenik
 - Damian Niemczyk
-- Maksim Guzino
+- Maksim Huzino
 
 Struktura projektu
 ---
