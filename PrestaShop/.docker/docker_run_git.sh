@@ -79,7 +79,7 @@ if [ $PS_DEMO_MODE -ne 0 ]; then
 fi
 
 echo "\n* Almost ! Starting web server now\n";
-
+a2enconf mutex
 a2enmod ssl
 a2enmod rewrite
 exec apache2-foreground

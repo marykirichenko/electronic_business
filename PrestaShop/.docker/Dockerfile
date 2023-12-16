@@ -6,6 +6,9 @@ FROM prestashop/prestashop-git:$VERSION
 ARG GROUP_ID
 ARG USER_ID
 
+#added
+RUN echo "Mutex posixsem" >> /etc/apache2/httpd.conf
+
 # To run files with the same group as your primary user
 RUN groupmod -g $GROUP_ID www-data \
   && usermod -u $USER_ID -g $GROUP_ID www-data
